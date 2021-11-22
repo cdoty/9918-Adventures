@@ -1,3 +1,5 @@
+#include <locale>
+
 #include "Cassette.h"
 
 Cassette::Cassette()	:

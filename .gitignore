@@ -41,6 +41,9 @@
 *.su
 *.idb
 *.pdb
+*.sdf
+*.opensdf
+*.suo
 
 # Kernel Module Compile Results
 *.mod*
@@ -68,3 +71,5 @@ BBC/burger
 *.sg
 *.cas
 *.mp3
+Debug/
+Release/

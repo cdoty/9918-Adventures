@@ -1,7 +1,7 @@
 # 9918 Adventures is a starter assembly language project for the following TMS-9918a based systems:
-* **Apple II** with Super Sprite or **AppleTi** type card.
+* **Apple II** with E-Z Color Graphics Interface, Super Sprite, Third Millenium Arcade, or **AppleTi** boards.
 * BBC with Logotron Sprite Board card.
-* **BBC Bridge Computer** with modifications to enable full 16k VRAM access.
+* **BBC Bridge Companion** with modifications to enable full 16k VRAM access.
 * Bit90 computer.
 * Frael Bruc 100 computer.
 * **Colecovision and Adam.**
@@ -10,7 +10,7 @@
 * Forte arcade board.
 * hbc-56 homebrew computer.
 * **Sord M5**.
-* **MSX computer.**
+* **MSX1 computer.**
 * **Memotech MTX computer.**
 * Nichibutsu My Vision.
 * **Hanimex Pencil II computer.**
@@ -21,3 +21,5 @@
 * **Tomy Tutor computer.**  
   
 &emsp;&ensp;&nbsp;**Systems with a bold name were testing using actual hardware with a cartridge, disk, and/or cassette.**
+
+Visual Studio Code projects are also included in each directory. There are a few parts that are Windows specific.

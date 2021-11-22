@@ -1,15 +1,12 @@
 #pragma once
 
-#include <stdio.h>
-#include <string>
-#include <vector>
-
 #include "Macros.h"
 
-// File read and writing class. Wraps FILE*, and provides additional functionality.
 class File
 {
 	public:
+		PTR(File)
+
 		enum SeekPoint
 		{
 			SeekFromStart	= 0,
@@ -17,10 +14,8 @@ class File
 			SeekFromEnd
 		};
 
-		PTR(File)
-
 		// Destructor
-		~File();
+		virtual ~File();
 
 		// Create
 		static Ptr create();
@@ -92,6 +87,12 @@ class File
 		// Write string
 		bool writeString(const std::string& _strString) const;
 		
+		// Delete file
+		static bool deleteFile(const std::string& _strFilename);
+		
+		// Get filename from path
+		static std::string getFilenameFromPath(const std::string& _strPath);
+
 		// Seek
 		bool seek(int _iOffset, SeekPoint _eSeekPoint = SeekFromCurrent) const;
 		
@@ -103,63 +104,6 @@ class File
 		
 		// End of file?
 		bool endOfFile() const;
-
-		// File exists?
-		static bool fileExists(const std::string& _strFilename, bool _bIgnoreDirectories = true);
-		
-		// Directory exists?
-		static bool directoryExists(const std::string& _strDirectoryName);
-		
-		// Copy file
-		static bool copyFile(const std::string& _strSrc, const std::string& _strDest);
-
-		// Delete file
-		static bool deleteFile(const std::string& _strFilename);
-		
-		// Delete multiple files
-		static bool deleteMultipleFiles(const std::string& _strFilename);
-		
-		// Delete directory
-		static bool deleteDirectory(const std::string& _strDirectory);
-		
-		// Recursively delete directory
-		static bool recursivelyDeleteDirectory(const std::string& _strDirectory);
-
-		// Create directory
-		static bool createDirectory(const std::string& _strFilename);
-		
-		// Get current directory
-		static std::string getCurrentDirectory();
-
-		// Set current directory
-		static bool setCurrentDirectory(const std::string& _strDirectory);
-
-		// Set working directory
-		static bool setWorkingDirectory();
-
-		// Get program directory
-		static std::string getProgramDirectory();
-
-		// Get filename from path
-		static std::string getFilenameFromPath(const std::string& _strPath);
-
-		// Get extension from path
-		static std::string getExtensionFromPath(const std::string& _strPath);
-
-		// Get filename + extension from path
-		static std::string getFullFilenameFromPath(const std::string& _strPath);
-
-		// Get directory from path
-		static std::string getDirectoryFromPath(const std::string& _strPath);
-
-		// Find files
-		static bool findFiles(const std::string& _strPath, std::vector<std::string>& _vecFiles);
-
-		// Find directories
-		static bool findDirectories(const std::string& _strPath, std::vector<std::string>& _vecDirectories);
-
-		// Append directory separator
-		static void addDirectorySeparator(std::string& _strPath);
 
 		// Get handle
 		FILE* getHandle() const {return m_pHandle;}

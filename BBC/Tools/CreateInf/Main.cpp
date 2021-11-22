@@ -1,5 +1,7 @@
+#include <stdio.h>
+#include <string>
+
 #include "File.h"
-#include "stdio.h"
 
 void usage();
 
