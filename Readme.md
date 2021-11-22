@@ -20,4 +20,4 @@
 * **Texas Instruments TI-99/4a computer**.
 * **Tomy Tutor computer.**  
 
-&emsp;&ensp;&nbsp;** Systems with a bold name were testing using actual hardware with a cartridge, disk, and/or cassette.**
+&emsp;&ensp;&nbsp; ** Systems with a bold name were testing using actual hardware with a cartridge, disk, and/or cassette.**
