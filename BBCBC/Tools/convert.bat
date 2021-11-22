@@ -1,0 +1,1 @@
+srec_cat -address-length=2 %1.bin -binary -output %1.hex -Intel 

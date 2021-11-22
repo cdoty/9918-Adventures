@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html><head><title>tniASM v1.0 Manual (work in progress!)</title>
+<style type="text/css">
+body {
+  counter-reset: chapter;
+  margin-left: 1.5em;
+  margin-right: 3em;
+}
+
+div.content h1:before {
+  counter-increment: chapter;
+  content: "Chapter " counter(chapter) ": ";
+}
+div.content h1 {
+  text-decoration: underline;
+  counter-reset: section;
+}
+
+div.content h2:before {
+  counter-increment: section;
+  content: counter(chapter) "." counter(section) " ";
+}
+
+div.content h2 {
+  counter-reset: subsection;
+}
+
+div.content h3:before {
+  counter-increment: subsection;
+  content: counter(chapter) "." counter(section) "." counter(subsection) " ";
+}
+
+p, .section, pre {
+  margin-left: 1.5em;
+}
+
+pre {
+  padding: 2px;
+  background: #EEE;
+  border: 1px solid black;
+  white-space: pre-wrap;
+}
+
+.header {
+  text-align: center;
+}
+
+</style></head><body>
+
+<div class="header"><hr>
+<h1>tniASM v1.0</h1>
+<h2>(c) 2000-2018 by The New Image</h2>
+<h3>Programmed by Patriek Lesparre</h3>
+<a href="http://tniasm.tni.nl/">http://tniasm.tni.nl/</a><br>
+e-mail: <a href="mailto:tniasm@tni.nl">tniasm@tni.nl</a>
+<hr></div>
+
+<div class="content">
+<h1>Introduction</h1>
+
+<div class="section"><h2>Not your grandmother's assembler!</h2>
+<p>tniASM has always been a bit eccentric, but tniASM v1.0 takes it a step further and departs from the concept of a traditional assembler. It doesn't actually know about Z80, x86 or ARM chips. Instead it assembles macros! Therefore you could describe tniASM as a macro assembler. Using macros you can teach it any CPU you want, existing or imaginary. Ideal for experimenting with custom FPGA processors, or writing programs for systems with multiple CPU architectures.</p>
+<p>Another way to describe tniASM is: a programming language to define and use custom programming languages in-line. What all of that means is that aside from compiling assembly programs, you can use tniASM for many other things. Its uses range from cutting, merging, and patching files to implementing and using a high-level scripting or programming language. Such is the power of tniASM.</p>
+<p>Continuing tniASM tradition, great care has been taken in remaining very easy to use while providing powerful features.</p>
+</div>
+
+<div class="section"><h2>Starting tniASM</h2>
+<p>The most basic way to invoke tniASM is this:</p>
+<pre>tniasm &lt;filename&gt;</pre>
+<p>If a filename without extension is given and it doesn't exist, tniASM will add a ".asm" extension and try again. It will also check both the current working directory and the directory that contains the tniASM executable.</p>
+<p>You will probably want to put tniASM and its support files into a directory somewhere and include it in your PATH environment variable. See the manual section on <a href="#search_paths">Search paths</a> for more information.</p>
+</div>
+
+<div class="section"><h2>Input files</h2>
+<p>tniASM takes ASCII textfiles as input, with Unix or DOS style line endings. Unlike its name, tniASM is not case sensitive, so upper and lower case letters may be used interchangably. Note that when running on Linux, paths and filenames will still be case-sensitive. Also note that using forward slashes ('/') as directory separators works fine in Windows, and tniASM will convert backslashes ('\') to forward slashes ('/') if input files have DOS/Windows line-endings.</p>
+
+<div class="section">
+<h3>Whitespace</h3>
+<p>There are no rules in tniASM that say labels must be defined on the first column, or instructions have to start on the first tab. So you have great freedom in laying out your input files.</p>
+<p>Line breaks do have the property of clearly separating instructions, which although generally not required may in some cases be wanted and is required when defining macros and using conditional instructions. An alternative to actually starting a new line is using the line break character '\'.</p>
+<p>The '\' character can also be used to glue lines together by placing it at the very end of a line.</p>
+
+<h3>Comments</h3>
+<p>The semi-colon (';') is used as the comment-character. It can be placed anywhere on a line and everything behind it is ignored until a hard line break (The '\' character does not count).</p>
+<p>In addition to line comments, tniASM also supports inline, nestable, comment blocks.</p>
+<p>The '/;' and '\;' character combinations respectively mark the beginning and the end of a comment-block. They can be placed anywhere in a file, and everything between them is ignored. Comment-blocks are partically infinitely nestable.</p>
+<p>Alternatively, '/*' and '*/' can be used interchangably with '/;' and '\;' respectively.</p>
+
+</div>
+</div>
+
+<div class="section"><h2>Output files</h2>
+<p>By default, tniASM will send its output to a file named "tniasm.out". See <a href="#outfile">%outfile</a> to specify something else.</p>
+</div>
+
+<div class="section"><h2>Compatibility with old versions</h2>
+<p>In order to overcome the limits of a CPU-oriented design, tniASM was completely rewritten from the ground up in C++ and new design decisions were made. In combination with <a href="#compat">compat.asm</a>, compatibility with the v0.x series is quite high but not 100%.</p>
+
+<div class="section">
+<h4>Syntax differences</h4>
+<ul>
+<li>Precedence levels have been changed from Pascal to C style.</li>
+<li>Characters for block comments ('{' and '}') and line separator ('|') have been changed.</li>
+<li>AND, OR, XOR, NOT and MOD operators have been replaced by '&', '|', '^', '~' and '%' respectively.</li>
+<li>Binary numbers can't be spaced anymore.</li>
+<li>Hexadecimal numbers don't need any leading zeroes anymore.</li>
+<li>Label definitions not ending in a colon are supported.</li>
+</ul>
+
+<h4>Pseudo Instruction differences</h4>
+<ul>
+<li><strike>The second parameter to ORG (%aposlimit) does not ignore phasing anymore.</strike></li>
+<li>DC can't take lists of strings anymore.</li>
+<li>IFDEF now functions the same as IFEXIST.</li>
+</ul>
+
+<h4>CPU Support differences</h4>
+<ul>
+<li>PUSH/POP can't take lists of registers anymore.</li>
+<li>Instruction definitions for the Z380 are included.</li>
+</ul>
+
+<h4>Other differences</h4>
+<ul>
+<li>Symbol files are not created automatically anymore.</li>
+</ul>
+
+<h4 id="compat">compat.asm</h4>
+<p>This file sets tniASM up for the highest possible compatibility with the old v0.x series.</p>
+<p>The commandline is the same as with tniASM v0.x, with the addition of "compat":</p>
+<pre>tniasm compat &lt;input file&gt; [&lt;output file&gt;]</pre>
+<p>Note that as of the current version, you still need manually change the syntax differences.</p>
+</div>
+
+</div>
+
+<h1>The tniASM language</h1>
+<div class="section">
+
+<h2>Constants</h2>
+<p>There are 2 different kinds of constants in tniASM: numeral and string.</p>
+
+<div class="section">
+<h3>Numerals</h3>
+<p>Numbers are 32-bit signed integer values, ranging from -2147483648 (80000000h) to 2147483647 (7FFFFFFFh), and can be represented in various ways.</p>
+<pre>
+Decimal:     789123
+             789123d
+
+Hexadecimal: ABC123h (Note that this format does NOT need a 0-prefix.)
+             $ABC123
+             0xABC123
+
+Binary:      111000b
+             %111000
+
+Octal:       567123o
+             567123q
+</pre>
+
+<h3>Strings</h3>
+<p>A string is anything between single or double quotes.</p>
+<pre>
+"a 'double-quoted' string can contain single quotes"
+'a "single-quoted" string can contain double quotes'
+</pre>
+
+<h3>String value</h3>
+<p>Strings that are 4 bytes or less double up as a numeral. Each character is interpreted as an ASCII value, low-byte first. The constant 'A' is thus seen as 41h, 'AB' as 4241h (or 41h,42h), 'ABC' as 434241h (41h,42h,43h) and 'ABCD' as 44434241h (41h,42h,43h,44h).</p>
+
+</div>
+
+<h2>Expressions</h2>
+<p>Expressions are evaluated in 32 bit signed integer arithmetic. An expression consists of one or more factors, combined with zero or more operators. A factor is either a constant or a label.</p>
+
+<div class="section">
+<h3>Evaluation</h3>
+<p>The next few sections list all supported operators, starting with the lowest precedence-level. Operators with equal precedence are evaluated from left to right.</p>
+<p>Of course any precedence can be overridden with the parenthesis '(' and ')'.</p>
+
+<h3>Precedence level 0 - Relational operators</h3>
+<p>The relational operators are:</p>
+<pre>
+x = y   Equals
+x <> y  Not equals
+x >< y   "    "
+x != y   "    "
+x < y   Less than
+x > y   Greater than
+x <= y  Equal or less than
+x =< y    "   "   "    "
+x >= y  Equal or greater than
+x => y    "   "   "    "
+</pre>
+<p>Unlike in the C-language, the relational operators use -1 for 'true' and 0 for 'false' (instead of 1 and 0). This way there's no need for boolean versions of the AND, OR and XOR operators, since they work in exactly the same way as the bitwise ones.</p>
+<p>The relational operators allow for complex expressions such as getting the absolute value:</p>
+<pre>
+%macro abs(%n) \ (#1*(1+2*(#1<0))) \ %endmacro
+</pre>
+
+<h3>Precedence level 1 - Additive and boolean operators</h3>
+<pre>
+x + y   Addition
+x - y   Subtraction
+
+x & y   Bitwise AND
+x | y   Bitwise OR
+x ^ y   Bitwise XOR
+</pre>
+
+<h3>Precedence level 2 - Multiplicative operators</h3>
+<pre>
+x * y   Multiplication
+x ** y  Exponentiation
+x / y   Division
+x % y   Modulo
+
+x << y  Shift left
+x >> y  Shift right (unsigned)
+</pre>
+
+<h3>Precedence level 3 - Unary operators</h3>
+<pre>
++ x     Unary plus
+- x     Unary minus
+~ x     One's complement
+</pre>
+
+</div>
+
+<h2>Labels</h2>
+<p>A label is an alias for the result of an expression.</p>
+
+<div class="section">
+<h3>Name format</h3>
+<p>The length of a label is practically unlimited. Besides letters and numbers, valid characters in label names are:
+<pre>. _ # $ @ : ' ?</pre>
+<p>The characters '.' and ':' are special, they have functions in label definition and shortcut mechanisms.</p>
+<p>Labels cannot start with the following characters:</p>
+<pre>: ' ?</pre>
+
+<h3>Definition</h3>
+<p>In its simplest form, a label is defined by writing its name.</p>
+<pre>
+mylabel         ; 'mylabel' is now defined
+</pre>
+<p>A label defined in this way simply takes on the current assembly position as its value, and is not a parent label (more on that later).</p>
+
+<p>The recommended and most common form is to end the label definition in a colon (':'). This has the side-effect of making the label the new parent in the local label mechanism.</p>
+<pre>
+mylabel:        ; 'mylabel' is now defined and is the new parent label
+</pre>
+
+<p>Using two colons marks the label as 'export'. This means it will end up in the label export file.</p>
+<pre>
+mylabel::       ; 'mylabel' is now defined and exported and is the new parent label
+</pre>
+
+<h3>Local label mechanism</h3>
+<p>The local label mechanism is a way to use shortcut labels. This cleans up your input files considerably and enhances readability.</p>
+
+<p>Local labels start with a '.' and are internally applied to the previous parent label. As explained earlier, a label is a parent label when it has been declared with a ':' suffix.</p>
+<pre>
+main:   ld   b,8
+.loop:  call doSomething
+        djnz .loop
+
+sub:    ld   b,8
+.loop:  call doSomething
+        djnz .loop
+</pre>
+<p>In the above code, four separate labels are defined: "main", "main.loop", "sub", and "sub.loop". This means you can also access local labels outside the scope of the current parent label. Like so:</p>
+<pre>
+main:   {...}
+.end:   ret
+
+sub:    {...}
+        jp   main.end
+.end:   ret
+</pre>
+<p>Vice versa, labels that are local outside of the scope of the current parent label can be defined:</p>
+<pre>
+main:   ld      a,[.value]
+        {...}
+
+sub:    {...}
+
+main.value      db  0   ; note that this label is defined without a suffix, and as such does not influence the parent label.
+</pre>
+
+
+</p>
+</div>
+
+<h2>Commands</h2>
+<p>All tniASM commands start with a '%' character.</p>
+
+<div class="section">
+<h3>%def8 / %def16 / %def24 / %def32</h3>
+<p>Define a (string of) byte(s) / word(s) / 24-bit value(s) / longword(s).</p>
+<pre>
+%def8   255
+%def8   "bla",13,10
+%def16  'AB',4000h
+%def16  "string may be odd"        ; odd strings are 0-padded
+</pre>
+
+<h3>%defb</h3>
+<p>Define block of bytes.</p>
+<pre>
+%defb   10                 ; defines 10 bytes of 0
+%defb   10,255             ; defines 10 bytes of 255
+%defb   4000h-%apos        ; pad with 0 until address 4000h
+%defb   0                  ; doesn't do anything
+%defb   -1                 ; the same goes for negative values
+</pre>
+
+<h3>%res8 / %res16 / %res24 / %res32</h3>
+<p>Reserve a (number of) byte(s) / word(s) / 24-bit value(s) / longword(s) as uninitialised data. This is basically the same as %defb, but does not update the file position, neither does it output anything. It merely updates the assembly position. It's useful e.g. when declaring variables in RAM or external ROM.</p>
+<pre>
+        %org    C000h
+Var1:   %res8   2               ; Var1 = 0C000h
+Var2:   %res16  1               ; Var2 = 0C002h
+Var3:   %res8   0               ; Var3 = 0C004h
+Var4:   %res32 -1               ; Var4 = 0C004h because zero and negative values are ignored
+</pre>
+
+<h3>%equ</h3>
+<p>Assign a value to a label. An EQU must follow a label on the same line. The value can be any tniASM type, including a string.</p>
+<pre>
+bankstart:      EQU  4000h
+                ORG  bankstart          ; same as org 4000h
+mystring:       %equ    "STRINGS!"
+</pre>
+
+<h3 id="outfile">%outfile</h3>
+<p>Specify output file. Use %outfile to make tniASM output to a file other than 'tniasm.out'. You can use %outfile as much as you like throughout your input files in order to output different parts to different files.</p>
+<p>%outfile also sets <a href="#fpos">%fpos</a> to 0.</p>
+<pre>
+%outfile "output.bin"      ; 'output.bin' is created and used as output
+</pre>
+<p>In stead of creating a new file, you can also instruct tniASM to output to an existing file by specifying a second parameter to %outfile. This second parameter is the file position where tniASM will output to, and %fpos is automatically set with this value.</p>
+<pre>
+%outfile "output.bin",1024 ; output starts at position 1024 in the existing file 'output.bin'
+%outfile "output.bin",0    ; output starts at position 0, like normal, but in an existing 'output.bin'
+</pre>
+
+<h3 id="symfile">%symfile</h3>
+<p>%symfile enables symbol file creation. An empty string results in 'tniasm.sym'</p>
+
+<h3 id="expfile">%expfile</h3>
+<p>Labels marked for export are output to 'tniasm.exp'. Use this command to change the filename.</p>
+
+<h3 id="forg">%forg</h3>
+<p>Set output file position. You can use %forg to cause tniASM to output at a certain file position. If the position is larger than the file it will be padded with 0's.</p>
+
+<h3>%incbin</h3>
+<p>Include binary file. The %incbin instruction includes a binary file in the current machine code output. It's particularly useful for embedding graphics or large tables that you wouldn't want to have in huge DB lists.</p>
+<p>%incbin optionally takes 1 or 2 more parameters. The first is the offset in the file to be included. The second is the total length of data to be included.</p>
+<pre>
+%incbin "music1.bin"             ; include the whole binary file
+%incbin "basic.bin",7            ; include from offset 7
+%incbin "cutout.bin",1024,512    ; include 512 bytes from offset 1024
+</pre>
+
+<h3 id="include">%include</h3>
+<p>The %include instruction includes another file in the current input, in nesting levels as deep as memory permits.</p>
+<pre>
+%include "incthis.asm"
+</pre>
+</div>
+
+<h2>Conditional assembly</h2>
+<p>Sometimes it's useful to have a certain piece of code assemble only when certain conditions are met. For instance when writing code for multiple platforms at the same time (Z80 and R800 for example), or for including/excluding debug code.</p>
+
+<p>tniASM provides this functionality through the IF-construct. Its basic form is:</p>
+<pre>
+%if {expression} [{...}] [%else [{...}]] %endif
+</pre>
+<p>Note that it's allowed to use forward references in IF-constructs. They may also be used across input file boundaries. Of course IF's can be nested with a practically infinite depth.</p>
+
+<div class="section">
+<h3 id="if">%if</h3>
+<p>The expression is evaluated and is considered 'false' when zero, while any non-zero result is considered 'true'. The block following the %if instruction is executed when the expression is 'true'. Note that this block can be empty.</p>
+<p>Optionally, a block that is executed when the expression is 'false' can be inserted, using the %else command.</p>
+<p>The %if command must be terminated by an %endif command. If you forget to do this, tniASM will point you to the first unclosed %if.</p>
+<pre>
+loop:   {...}
+
+%if $-loop < 128
+  djnz loop
+%else
+  dec b
+  jp nz,loop
+%endif
+</pre>
+
+<h3>%def() <i>[function]</i></h3>
+<p>Returns true if label is defined anywhere in the followed input.</p>
+<pre>
+R800:           ; comment away for Z80 version
+
+%if %def(R800)
+  mulub a,b
+%else
+  call mulub_a_b
+%endif
+
+%if %def(R800)
+%else
+mulub_a_b:
+  {...}
+  ret
+%endif
+</pre>
+
+<h3>%else</h3>
+<p>See <a href="#if">%if</a>.</p>
+
+<h3>%endif</h3>
+<p>See <a href="#if">%if</a>.</p>
+
+</div>
+
+<h2>Macros</h2>
+<p>Powerrrr</p>
+<div class="section">
+<h3>%macro</h3>
+
+</div>
+
+</div>
+
+<h1>Bundled macro definitions</h1>
+<div class="section"><h2>tniasm.inc</h2>
+<p>"tniasm.inc" includes functionality for providing code, data and uninitialised data segments and alignment. It also includes PHASE and DEPHASE functions, known from the v0.x series of tniASM.</p>
+
+<div class="section">
+<h3>ORG</h3>
+<p>In addition to setting the address position with <a href="#org">%org</a>, this macro resets phasing and also sets the <a href="#segmentcode">code segment</a> to this address and activates it.</p>
+<p><strike>It can take a second parameter, which is a limit for the address position. See %aposlimit.</strike></p>
+<pre>ORG  C000h             ; following code starts as if from C000h
+<strike>ORG  C000h,0           ; same as above</strike>
+<strike>ORG  4000h,7FFFh       ; start from 4000h, warn if exceeding 7FFFh</strike>
+</pre>
+
+<h3>PHASE/DEPHASE</h3>
+<p>PHASE adds an offset to the assembly position relative to the address specified. This is particularly useful for code that gets relocated later. DEPHASE removes the relative offset from the normal assembly position. A new PHASE or ORG command DEPHASE's any previous PHASE'ing.</p>
+<pre>
+; this example relocates the routine SetS#0 from its current
+; address to 0C000h. Because of the PHASE/DEPHASE its label
+; 'SetS#0' already points to 0C000h.
+
+        ORG     8000h
+
+        ld      hl,start
+        ld      de,SetS#0
+        ld      bc,SetS#0.end-SetS#0.start
+        ldir
+
+        /;...\;
+
+SetS#0.start:
+        PHASE   C000h
+SetS#0: xor     a               ; set V9938 S#0
+        out     [99h],a
+        ld      a,15+128
+        out     [99h],a
+        ret
+        DEPHASE
+.end:
+</pre>
+
+<h3>SECTION</h3>
+<p>Sections default to CODE > DATA > RDATA order.</p>
+</div>
+
+</div>
+
+<div class="section"><h2>string.inc</h2>
+<p>Basic string functions.</p>
+</div>
+
+<div class="section"><h2>z80r800.inc</h2>
+<p>This file provides support for the Z80 and R800 processors.</p>
+
+<div class="section">
+<h4>Differences with standard Z80 syntax rules</h4>
+<ul>
+<li>[ and ] are used for indirection, not ( and ). So if you want to read a word from memory address 4000h, you should use LD HL,[4000h] and not LD HL,(4000h) (which is equivalent to LD HL,4000h).</li>
+<li>IN [C] or IN F,[C] can be used. (Z80 undocumented)</li>
+<li>IX and IY can be split up in IXH, IXL, IYH, IYL respectively. (Z80 undocumented)</li>
+<li>SLL is supported. (Z80 undocumented)</li>
+</ul>
+
+<h4>Differences with standard R800 syntax rules</h4>
+<ul>
+<li>Z80 opcode and register names.</li>
+</ul>
+</div>
+
+<div class="section"><h3>z80().inc</h3>
+<p>Used in conjunction with "z80r800.inc", provides opcodes with parenthesis in addition to brackets.</p>
+</div>
+
+<div class="section"><h3>z80n00b.inc</h3>
+<p>Used in conjunction with "z80r800.inc", provides unofficial Z80 instruction names.</p>
+
+<ul>
+<li>For ADD, ADC, SUB, SBC, AND, XOR, OR and CP, the accumulator is optional. So CP A,B and CP B are equivalent.</li>
+<li>EX AF,AF and EX HL,DE are provided as aliases for EX AF,AF' and EX DE,HL respectively.</li>
+</ul>
+</div>
+
+<div class="section"><h3>z80macro.inc</h3>
+<p>Used in conjunction with "z80r800.inc", provides various macros.</p>
+
+<ul>
+<li>todo</li>
+</ul>
+</div>
+     
+</div>
+
+<div class="section"><h2>z380.inc</h2>
+<p>This file provides support for the Z380.</p>
+
+<div class="section">
+<h4>Differences with standard Z380 syntax rules</h4>
+<ul>
+<li>[ and ] are used for indirection, not ( and ). So if you want to read a word from memory address 4000h, you should use LD HL,[4000h] and not LD HL,(4000h) (which is equivalent to LD HL,4000h).</li>
+<li>Values and (relative) addresses automatically use 8, 16, 24 or 32bit formats as required.</li>
+<li>DDIR opcodes are not used. Instead WORD and LONG keywords are added to the opcode. Example: LD LONG BC,[801000h]</li>
+</ul>
+</div>
+     
+</div>
+
+<div class="section"><h2>gbz80.inc</h2>
+<p>This file provides support for the GBZ80.</p>
+
+<div class="section">
+<h4>Differences with standard GBZ80 syntax rules</h4>
+<ul>
+<li>LD A,(HLI) and LD A,(HLD) (and vice versa) are written LDI A,[HL] and LDD A,[HL].</li>
+<li>LD A,(n) and LD A,(C) (and vice versa) are written LDH A,[n] and LDH A,[C]. Furthermore they have aliases IN A,[x] and OUT [x],A. The LDH A,[n] and LDH [n],A can take values between 0-FF and FF00-FFFF hex.</li>
+<li>ADD SP,d is written LD SP,SP+d.</li>
+<li>LDHL SP,d is written LD HL,SP+d.</li>
+<li>"z80r800.inc" rules.</li>
+</ul>
+</div>
+
+</div>
+
+<h1>Advanced usage</h1>
+<div class="section">
+<h2>Command line</h2>
+<p>Additional parameters can be added to the command line, which will be passed on to the input file:</p>
+<pre>tniasm &lt;filename&gt; [&lt;argument1&gt; &lt;argument2&gt; &lt;argument...&gt;]</pre>
+<p>The first argument is accessed by the label "#1", the second by "#2", and so forth. The number of available arguments is in "#0". See "<a href="#compat">compat.asm</a>" for an example of how this works.</p>
+
+<h2>Symbol files</h2>
+<p>Symbol files generated by tniASM can be <a href="#include">%include</a>'d into source code again. This way you can link to a binary file that is loaded separately, or a library that is distributed as a pre-compiled binary. This is especially useful in combination with exported labels, because you can export only the labels from your program that are for external use. See the <a href="#expfile">%expfile</a> command.</p>
+<p>A general symbol table file can be output by using the <a href="#symfile">%symfile</a> command.</p>
+
+<h2 id="search_paths">Search paths</h2>
+<p>Input files (including any relative path) will first be searched for in the current working directory, then the directory containing the tniASM executable. If it's not found, tniASM will add a ".asm" extension and try again. For <a href="#include">%include</a>, tniASM will first search the directory of the current input file. The same counts for <a href="#incbin">%incbin</a>, except that adding ".asm" is not tried.</p>
+<p>For output files tniASM checks the path portion only. Search priority if 'input file directory' equals 'tniASM executable directory' is 'current working directory' and then 'tniASM executable directory'. Otherwise it is 'input file directory', then 'current working directory' and finally 'tniASM executable directory'. When <a href="#outfile">%outfile</a> points to an already existing file, the search works as described for <a href="#incbin">%incbin</a>.</p>
+
+<h2>Compatibility with other assemblers</h2>
+<p>Similarly to <a href="#compat">compat.asm</a>, asmsx.asm, sjasm.asm and wbass2.asm exist. As their names imply, they respectively provide (limited) support for assembling source code for the asMSX, Sjasm and WB-ASS2 assemblers.</p>
+
+<h2>Label names</h2>
+<p>Note that labels can start with a number, or be made up of numbers completely. This basically means that numbers can be redefined.</p>
+
+<h2>Macro details</h2>
+<div class="section">
+<h3>Force needing a line break for macro invocation</h3>
+<p>Sometimes you want to make sure a macro invocation ends with a line break. This can be enforced by starting the macro body with an extra line break.</p>
+<pre>
+%macro LD A,(%n) \\ %def8 3Ah \ %def16 #1 \ %endmacro
+</pre>
+
+<h3>End macro body in a line break</h3>
+<p>If there is whitespace between a line break and %endmacro, the macro body will end in a line break. Sometimes you want to be able to use a macro inline, and sometimes you don't.</p>
+<pre>
+%macro RGB8(%n,%n,%n) \ (#2<<5)+(#1<<2)+(#3>>1) \%endmacro ; Note there is no whitespace between the line break and the %endmacro.
+%def16 RGB8(1,2,3),RGB8(5,6,7)                             ; Therefor, it can be used in a list.
+
+%macro RGB9(%n,%n,%n) \ (#2<<8)+(#1<<4)+#3 \ %endmacro     ; Note there IS whitespace between the line break and the %endmacro.
+%def16 RGB9(1,2,3),RGB9(5,6,7)                             ; Therefor, this results in an error, because comma is on a new line.
+
+%macro NOP \ %def8 0 \ %endmacro                           ; Without a line break in this macro, one could write NOP,1 resulting in %def8 0,1
+</pre>
+
+</div>
+</div>
+
+<h1>Frequently Asked Questions</h1>
+<div class="section">
+<h2>Why does tniASM not support || and && logical operators?</h2>
+<p>Technically, || and && are not logical operators but control flow operators, similar to "a ? b : c"</p>
+<pre>
+(x || y) => (x ? true : y)
+(x && y) => (x ? y : false)
+</pre>
+<p>It is more clear in Ada, where these operators are called "short-circuit control forms", and have more descriptive names:</p>
+<pre>
+|| => "or else"
+&& => "and then"
+</pre>
+
+<h2>What's new?</h2>
+<pre>
+- When using z80().inc, tniASM now correctly recognizes eg. "LD A,(just) + (an * expression)" as a LD A,n instruction by allowing you to specify that a macro must end with a newline (or \ character). See z80().inc for the definition of LD A,(%n)
+
+A major new, but experimental, feature was added that allows you to construct a string and then parse it as input. It currently does not yet work inside expressions, but that will become possible eventually.
+
+The form is "%%<expression>" where the expression results in a string. This allows you to eg. construct labels or pass macro calls to other macros.
+
+An example:
+-
+%macro ProcessBCD %n, %n, %s
+          ld    hl,#1
+          ld    b,#2
+          ld    a,30h
+.#loop:   rld
+          %% #3
+          rld
+          %% #3
+          rld
+          inc   hl
+          djnz .#loop
+%endmacro
+
+ProcessBCD myBCDvariable, 4, "out [98h],a"
+-
+
+Another example:
+-
+nextlabel %set "0"
+
+%macro newlabel
+%% "mylabel" + nextlabel
+nextlabel %set nextlabel + 1
+%endmacro
+
+newlabel
+newlabel
+newlabel
+-
+</pre>
+<pre>
+.#label:	; local to macro.. replaced by unique ID (should become #.label soon)
+</pre>
+<pre>
+%valid(EXPRESSION)
+LABEL %set VALUE
+%len(STRING)
+- expressions can handle multiple types now.
+- strings can be >> shortened on the left, << shortened on the right, or + concatenated.
+- the above makes possible this: %macro mid$(%s,%n,%n)\(#1>>#2)<<(%len(#1)-#2-#3)\%endmacro
+</pre>
+
+</div>
+
+<h1>Other</h1>
+<div class="section">
+<h2>Contributors</h2>
+<p>BiFi contributed: asMSX compatibility layer, z80n00b.inc, bigendian.inc, cas.inc, MemMan TSR Development Kit.</p>
+<p><em>Thanks to all donators!</em></p>
+
+<h2>Disclaimer</h2>
+<p>Use this software at your own risk. The author is not responsible for any loss or damage resulting from the use or misuse of this software.</p>
+
+</div>
+</div>
+
+<hr>
+
+<!--
+%macro IFEXIST %i   (note that %i does not exist yet ^^;)
+%if %def(#1)
+%endmacro
+
+-
+
+While it's possible to define macros conditionally, care should be taken that the condition does not rely on forward references.
+%if ~%valid(condition) %fatal "Condition relies on forward reference"
+%if condition
+%macro conditional_macro
+etc...
+
+-
+
+<strike>%if, %else and %endif should appear directly after an EOL. If they are contained within a macro, that macro should appear directly after an EOL as well.
+Be careful with macros containing/hiding %if, %else and %endif in non-obvious ways.</strike>
+-
+        tniASM uses C-style operators<strike>, but of course you are free to use a macro to change that.
+		
+		%macro AND // this doesn't work yet ^^;
+		&
+		%endmacro</strike>
+-
+
+-->
+
+</body></html>

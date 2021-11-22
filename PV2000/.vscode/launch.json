@@ -1,0 +1,21 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Run Project",
+			"type": "cppvsdbg",
+			"request": "launch",
+			"args" : [
+				"pv2000",
+				"-cart",
+				"${workspaceFolder}\\Burger.bin",
+				"-debug"
+			],
+			"program": "e:/mame/mame.exe",
+			"cwd": "e:/mame"
+		}
+	]
+}

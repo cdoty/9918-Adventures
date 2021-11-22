@@ -1,0 +1,1 @@
+py tools\EPROM_NG.py -mem 27256 %1.hex COM4

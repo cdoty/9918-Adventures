@@ -1,0 +1,9 @@
+CartStart		%equ	2000h
+ROMStart		%equ	2010h
+ROMSize			%equ	(8*1024)
+RAMStart		%equ	F000h
+RAMSize			%equ	200h
+StackStart		%equ	FFF0h
+VDPBase			%equ	01h
+VDPReadBase		%equ	VDPBase
+InterruptTable	%equ	FFF0h

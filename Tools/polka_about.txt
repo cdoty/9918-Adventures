@@ -1,0 +1,206 @@
+-------------------------------------------
+Polka! v1.2       - by Wolf (november 2004)
+-------------------------------------------
+
+
+What is it?
+
+     A cute little tool to draw tiles for MSX screen 2 and screen 4. Typically those tiles
+     are used in demos and/or games.
+
+Legal?
+
+     Sell: NO
+     Use freely: YES
+     Publish on a paper-magazine's 'extras cd/disk': YES
+     Modify one or more bits of the contents of the Polka!-package, and spread: NO
+     Spread to let others enjoy: YES
+     Enjoy Polka! yourself: YES
+     Put it on a free-download website: YES
+
+
+
+Explanation of the picture
+
+lmb: left mousebutton
+rmb: right mousebutton
+fc:  foreground color
+bc:  background color
+
+1    Tiles
+     lmb: select
+     rmb: copy selected
+
+2    Grid
+     off | 1x1 | 2x2 | 4x4
+
+3    Coordinates
+     xTile | yTile | Pattern
+
+4    Zoom grid
+
+5    Transport filter
+     bc | pattern | fc
+
+     This is used in combination with 6 and 7, by switching on/off these parts
+     you define which parts will be copied with 6 and 7. It's for example possible
+     to 'import' the bc of another tile this way..
+
+6    Get tile
+     copies the selected tile to the zoom editor, using the filters described in 5
+
+7    Store tile
+     copies the contents of the zoom editor to the tiles, using the filters described in 5
+
+8-10 Zoom editor
+
+8    bc
+     lmb: draw selected color into the bc
+     rmd: color pick-up
+
+8    pattern editor
+     lmb: draw forground
+     rmd: draw background
+
+10   fc
+     lmb: draw selected color into the fc
+     rmd: color pick-up
+
+11   Modify filter
+     This defines which parts of the zoom editor will be affected by the modiers.
+     Note: bc and fc will only be affected by 'vertical modifiers'.
+
+12   Modifiers
+     - Shift
+     - Rotate CCW and CW
+     - Mirror
+
+13   Monocolor
+     This hides all colors from bc and fc and purely shows the pattern in 2 colors.
+
+14   RGB editor
+     Use this editor to modify your colors. It only works when the palette is unlocked.
+
+15   Preview
+     This shows the contents of the Zoom editor tiled.
+     lmb/rmb: switch between 3x3-view or single-view
+
+16   Palette Lock
+     This protects the palette from modification
+
+17   MSX
+     Sets the palette to the MSX1 palette. Only works when the palette is unlocked
+
+18   Reset
+     Pressing this button clears the pattern from the zoom-editor and sets the two colors
+     next to the button to bc and fc. Those colors can be changed.
+
+19   Palette
+     lmb: select color
+     rmb: copy selected color. Only works when the palette is unlocked.
+
+20   File I/O
+
+     While editing, the user solely works with ppr files. The patterns, colors and palette
+     can be exported to various styles. (21)
+     ASM: all contents in dw or db tables
+     BAS: patterns and colors are raw and contain a header, palette is a basic-subroutine
+     RAW: raw data, no headers.
+     
+     New in v1.2 top-right is a default-directories button. It was made rather quickly,
+     perhaps the design could be somewhat better, but once you get the grips on it, you'll
+     like it!
+     Clicking it pops-up a new window with at the left side 10 available directories, and
+     at the right side 18 fileformats, of which (in v1.2) 5 are used. Using the LMB on the 
+     left column (on a directory-slot of your choice) enables you to set the directory for 
+     that slot. On the right side you can use LMB to select a fileformat. To link a 
+     directory-slot to a fileformat, use RMB on the preferred directory-slot. The number of
+     the fileformat-block now changes to the number of the directory-slot. When you close 
+     the window the polka.ini file is automatically updated. If you didn't have a polka.ini 
+     yet, or you deleted it for some reason, a new one will be made and all directory-slots
+     point to the application-dir.
+
+     note: when you pop-up this window, the focus remains on that window, meaning that if
+     you want to draw again, you need to close this window first!
+
+     note 2: There seems to be a bug in Blitzplus (the language in which Polka was made). 
+     For the moment I don't know how to fix it, but until then: avoid using the application 
+     dir for your projects and other files. That is, you can use it ofcourse, but no matter 
+     what, you'll always end up in My Documents .. o_O . Funny detail tho is that this only 
+     happens with the exe file, not with the Polka project inside the Blitzplus editor.
+
+21   Export types
+
+22   Draw modes
+
+     Left column, from top to bottom:
+     - normal
+     - block
+     - draw block
+     - use
+
+     The column next to this column has additional features related to the left column:
+     - normal
+       - set RMB to copy
+       - set RMB to swap
+     - block
+       - save block
+       - copy block
+       - delete block
+       - apply block area on 'use'
+     - draw block
+       - load block
+     - use
+       - invert selection
+       - set all to 'unused'
+
+     Block load/save is handy for making your own lib of elements, like canons, trees,
+     space-ships, enemies etc. In a .p file, the palette is not saved, only the patterns
+     and the colortables
+     After loading a block file, click on the 'draw block' n the left column (which is the
+     mode for drawing loaded blocks!). The block stays in memory until you load another
+     block.
+     Block-copy does the same, but then without save/load.
+
+     With the 'use' function you can select and deselect tiles. Selected tiles will be
+     saved, this only works when using ASM mode and when saving patterns and colortables.
+     This is suitable when you make a font for example, there's no need for a whole file
+     with 32x8 tiles, and a font probably doesn't fit in a .p file (which is always
+     rectangle). The use settings are saved in the ppr file (the project file).
+     If you click the 'use' from the block menu, everything in 'use' is overwritten with 
+     the new block-related data!
+
+23   SME cursors (Store-Move-Edit)
+
+     These cursors do as the title says, it saves you from using the transportbuttons (6&7)
+     so it's a little faster this way. Note that it stores on the location of the selected
+     tile and moves from there. If you move the selected tile before using the SME buttons
+     then a tile will be stored at that new location, and moves from there.
+
+24   Foreground & Background copy/paste
+
+     The [ C ] copies the foreground and background colors, and [ P ] pastes them. Handy in
+     combination with the SME buttons
+
+25   Swapmode
+
+     The benefits of this function might not be clear at first sight, but they will when in 
+     a later update you can import ge5 and sc5 pictures. What it does is: it swaps the 
+     foreground color and background color of the selected row, and inverts the pattern. 
+     This way you don't see anything changing except the backgroundcolor and foreground
+     color.
+     It sometimes happens that you are drawing something and you change the background and
+     foreground colors a lot to get the desired result. If you wish to keep the background 
+     color as 'real' background, and the foreground as 'real' foreground (think of a brown
+     tree with blue air in the back) then you can use the swap-function if for some reason 
+     the foreground and background colors are mixed-up. The logical foreground and 
+     background can be analysed in monocolor-mode (13).
+     When in the future there will be support for bitmap formats (such as ge5 and sc5) the
+     chances are big that the foreground and background colors are pretty mushc mixed-up.
+     Now, for typical games, it doesn't really matter, but for games that move for example
+     the background colors to fake a scroll, it does matter!
+     
+.
+
+
+
