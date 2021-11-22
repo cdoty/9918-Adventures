@@ -1,3 +1,3 @@
 cd \mame
 mame pesadelo -debug
-cd \RetroDev\Burger\Forte
+cd \9918-Adventures\Forte

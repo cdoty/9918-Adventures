@@ -1,7 +1,7 @@
 ..\tools\tniASM\tniasm.exe Cart.s
 IF ERRORLEVEL 1 goto errorOut
 
-copy /b BIOS.bin+Burger.bin+RomRoutines.bin Rom.bin
+copy /b BIOS.raw+Burger.bin+RomRoutines.raw Rom.bin
 IF ERRORLEVEL 1 goto errorOut
 
 Tools\Swap Rom.bin epr2764.15

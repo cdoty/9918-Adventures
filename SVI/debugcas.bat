@@ -1,3 +1,3 @@
 cd \mame
-mame svi328 -cass E:\RetroDev\Burger\SVI\Burger.cas -debug
-cd \RetroDev\Burger\SVI
+mame svi328 -cass E:\9918-Adventures\SVI\Burger.cas -debug
+cd \9918-Adventures\SVI

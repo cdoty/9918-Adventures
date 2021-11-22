@@ -1,3 +1,3 @@
 cd \mame
-mame tutor -cart E:\RetroDev\Burger\Tutor\Burger.bin -debug
-cd \RetroDev\Burger\Tutor
+mame tutor -cart E:\9918-Adventures\Tutor\Burger.bin -debug
+cd \9918-Adventures\Tutor

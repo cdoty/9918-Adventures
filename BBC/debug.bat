@@ -1,3 +1,3 @@
 cd \mame
-mame bbcb -1mhzbus sprite -flop1 e:\RetroDev\Burger\BBC\Burger.ssd -debug
-cd \RetroDev\Burger\BBC
+mame bbcb -1mhzbus sprite -flop1 e:\9918-Adventures\BBC\Burger.ssd -debug
+cd \9918-Adventures\BBC

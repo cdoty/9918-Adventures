@@ -1,3 +1,3 @@
 cd \mame
-mame wizzard -cart E:\RetroDev\Burger\Creativision\Burger.bin -debug
-cd \RetroDev\Burger\Creativision
+mame wizzard -cart E:\9918-Adventures\Burger.bin -debug
+cd \9918-Adventures\Creativision

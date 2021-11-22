@@ -1,3 +1,3 @@
 cd \mame
-mame bbcbc -cart E:\RetroDev\Burger\BBCBC\Burger.bin -debug
-cd \RetroDev\Burger\BBCBC
+mame bbcbc -cart E:\9918-Adventures\BBCBC\Burger.bin -debug
+cd \9918-Adventures\BBCBC

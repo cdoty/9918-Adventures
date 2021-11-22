@@ -1,3 +1,3 @@
 cd \mame
-mame pv2000 -cart E:\RetroDev\Burger\PV2000\Burger.bin -debug
-cd \RetroDev\Burger\PV2000
+mame pv2000 -cart E:\9918-Adventures\PV2000\Burger.bin -debug
+cd \9918-Adventures\PV2000

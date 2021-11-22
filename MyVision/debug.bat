@@ -1,3 +1,3 @@
 cd \mame
-mame myvision -cart E:\RetroDev\Burger\MyVision\Burger.bin -debug
-cd \RetroDev\Burger\MyVision
+mame myvision -cart E:\9918-Adventures\MyVision\Burger.bin -debug
+cd \9918-Adventures\MyVision

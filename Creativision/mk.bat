@@ -1,7 +1,7 @@
 ..\tools\acme\acme Cart.s
 IF ERRORLEVEL 1 goto errorOut
 
-copy /b Burger.bin+FirstBank.bin Burger.rom
+copy /b Burger.bin+FirstBank.raw Burger.rom
 IF ERRORLEVEL 1 goto errorOut
 
 Tools\SwapBanks Burger.bin

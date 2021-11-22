@@ -1,3 +1,3 @@
 cd \mame
-mame bruc100 -cass E:\RetroDev\Burger\Bruc100\BurgerBruc.wav -debug
-cd \RetroDev\Burger\Bruc100
+mame bruc100 -cass E:\9918-Adventures\Bruc100\BurgerBruc.wav -debug
+cd \9918-Adventures\Bruc100
