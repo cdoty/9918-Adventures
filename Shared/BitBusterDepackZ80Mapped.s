@@ -5,17 +5,23 @@
 decompressToVRAM:
 %if %def(DISABLE_INTERRUPTS)
 	di
-%ENDIF
+%endif
+
+%if %def(WRITE_OFFSET_2)
+WriteOffset	%equ	2
+%else
+WriteOffset	%equ	1
+%endif
 
 ; VRAM address setup
-	ld		a, (VDPBase + 1)	; Reset register write mode
+	ld		a, (VDPBase + WriteOffset)	; Reset register write mode
 
 	ld		a, e
-	ld		(VDPBase + 1), a
+	ld		(VDPBase + WriteOffset), a
 
 	ld		a, d
 	or		40h
-	ld		(VDPBase + 1), a
+	ld		(VDPBase + WriteOffset), a
 
 ; Skips 4 bytes data header
 	inc		hl
@@ -164,11 +170,11 @@ Gamma_size_end:
 
 @@loop:	
 	ld		a, l
-	ld		(VDPBase + 1), a
+	ld		(VDPBase + WriteOffset), a
 	nop
 
 	ld		a, h
-	ld		(VDPBase + 1), a
+	ld		(VDPBase + WriteOffset), a
 	nop
 
 	ld		a, (VDPReadBase)
@@ -177,11 +183,11 @@ Gamma_size_end:
 	ex		af, af'
 
 	ld		a, e
-	ld		(VDPBase + 1), a
+	ld		(VDPBase + WriteOffset), a
 
 	ld		a, d
 	or		40h
-	ld		(VDPBase + 1), a
+	ld		(VDPBase + WriteOffset), a
 
 	ex		af, af'
 	
@@ -202,6 +208,6 @@ Gamma_size_end:
 Depack_out:
 %if %def(DISABLE_INTERRUPTS)
 	ei
-%ENDIF
+%endif
 
 	ret

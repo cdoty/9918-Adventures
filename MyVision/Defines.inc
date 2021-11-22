@@ -4,3 +4,4 @@ RAMStart	%equ	A000h
 RAMSize		%equ	800h
 StackStart	%equ	A800h
 VDPBase		%equ	E000h
+VDPReadBase	%equ	VDPBase
