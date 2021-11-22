@@ -1,3 +1,6 @@
+set WORKING_DIRECTORY=%cd%
+
 cd \mame
-mame coleco -cart E:\9918-Adventures\Coleco\Burger.bin -debug
-cd \9918-Adventures\Coleco
+mame coleco -cart %WORKING_DIRECTORY%\Burger.bin -debug
+
+cd %WORKING_DIRECTORY%

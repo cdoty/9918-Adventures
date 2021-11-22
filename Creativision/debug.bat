@@ -1,3 +1,6 @@
+set WORKING_DIRECTORY=%cd%
+
 cd \mame
-mame wizzard -cart E:\9918-Adventures\Burger.bin -debug
-cd \9918-Adventures\Creativision
+mame wizzard -cart %WORKING_DIRECTORY%\Burger.bin -debug
+
+cd %WORKING_DIRECTORY%

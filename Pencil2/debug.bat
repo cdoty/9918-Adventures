@@ -1,3 +1,6 @@
+set WORKING_DIRECTORY=%cd%
+
 cd \mame
-mame pencil2 -cart E:\9918-Adventures\Pencil2\Burger.bin -debug
-cd \9918-Adventures\Pencil2
+mame pencil2 -cart %WORKING_DIRECTORY%\Burger.bin -debug
+
+cd %WORKING_DIRECTORY%

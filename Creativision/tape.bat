@@ -13,5 +13,3 @@ rename Burger.wav BurgerCreativision.wav
 
 ..\..\Tools\LAME\lame -h --preset insane BurgerCreativision.wav BurgerCreativision.mp3
 IF ERRORLEVEL 1 goto errorOut
-
-copy BurgerCreativision.mp3 h:\Voice\Creativision

@@ -1,3 +1,6 @@
+set WORKING_DIRECTORY=%cd%
+
 cd \mame
 mame pesadelo -debug
-cd \9918-Adventures\Forte
+
+cd %WORKING_DIRECTORY%

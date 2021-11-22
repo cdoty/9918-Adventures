@@ -1,3 +1,6 @@
+set WORKING_DIRECTORY=%cd%
+
 cd \mame
-mame cx5m -cartridge1 E:\9918-Adventures\MSX\Burger.rom -debug
-cd \9918-Adventures\MSX
+mame cx5m -cartridge1 %WORKING_DIRECTORY%\Burger.rom -debug
+
+cd %WORKING_DIRECTORY%

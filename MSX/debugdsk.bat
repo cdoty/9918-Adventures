@@ -1,3 +1,6 @@
+set WORKING_DIRECTORY=%cd%
+
 cd \mame
-mame svi738 -flop E:\9918-Adventures\MSX\Burger.dsk -debug
-cd \9918-Adventures\MSX
+mame svi738 -flop %WORKING_DIRECTORY%\Burger.dsk -debug
+
+cd %WORKING_DIRECTORY%

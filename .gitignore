@@ -54,3 +54,6 @@ dkms.conf
 *.bin
 *.bin
 *.15
+*.lst
+*.rom
+*.rpk
