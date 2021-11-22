@@ -57,3 +57,13 @@ dkms.conf
 *.lst
 *.rom
 *.rpk
+*.inf
+*.ssd
+BBC/burger
+*.cart
+*.com
+*.dsk
+*.mtx
+*.wav
+*.sg
+*.cas
