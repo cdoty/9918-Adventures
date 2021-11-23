@@ -7,7 +7,8 @@ IF ERRORLEVEL 1 goto errorOut
 Tools\Swap Rom.bin epr2764.15
 IF ERRORLEVEL 1 goto errorOut
 
-mkdir e:\mame\roms\pesadelo
+if not exist "e:\mame\roms\pesadelo" mkdir e:\mame\roms\pesadelo
+
 copy /Y epr2764.15 e:\mame\roms\pesadelo
 
 echo Build completed successfully

@@ -3,7 +3,8 @@
 
 #include "File.h"
 
-File::File()
+File::File()	:
+	m_pHandle(NULL)
 {
 }
 
