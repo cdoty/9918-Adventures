@@ -1,8 +1,8 @@
-#PK8000/Photon system documentations
-The graphics hardware is nearly a clone of the TMS-9918a, but it lacks sprite hardware.
-Photon system only supports 4 directions and a coin input.
+# PK8000/Photon system documentations
+* The graphics hardware is nearly a clone of the TMS-9918a, but it lacks sprite hardware.
+* Photon system only supports 4 directions and a coin input.
 
-#Memory locations
+# Memory locations
 Ram/Rom swap ($80): Four 16k banks can be swapped in and out. Only affects read, writes always go to ram.
 There are two bits for each bank:
 00 Enables rom in that bank.
