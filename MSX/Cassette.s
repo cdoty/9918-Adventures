@@ -10,6 +10,8 @@
 %outfile "Cassette.bin"
 %symfile "Burger.map"
 
+DISABLE_INTERRUPTS:	; Disable interrupts during compressed data transfer
+
 %include "RamDefines.inc"
 %include "CassetteStartup.s"
 %include "..\Shared\TitleZ80.s"

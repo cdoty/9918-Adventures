@@ -73,3 +73,7 @@ BBC/burger
 *.mp3
 Debug/
 Release/
+*.bin
+*.bin
+*.wav
+*.cas
