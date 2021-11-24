@@ -7,7 +7,7 @@ IF ERRORLEVEL 1 goto errorOut
 ..\tools\appmake.exe +mtx --dumb --audio --fast -b BURGER.mtx
 IF ERRORLEVEL 1 goto errorOut
 
-del BurgerMTX.wav
+if exist BurgerMTX.wav del BurgerMTX.wav
 
 rename BURGER.wav BurgerMTX.wav
 

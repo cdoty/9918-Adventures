@@ -1,7 +1,4 @@
-..\tools\tniASM\tniasm.exe Cassette.s
-IF ERRORLEVEL 1 goto errorOut
-
-copy /b Header.bin+Cassette.bin BURGER.bin
+..\Tools\vasm\vasmz80_oldstyle_win32 -L Burger.map -pad=255 -Fbin -o Burger.bin -8080 -intel-syntax Cassette.s
 IF ERRORLEVEL 1 goto errorOut
 
 if exist Burger.cas del Burger.cas
@@ -9,13 +6,10 @@ if exist Burger.cas del Burger.cas
 tools\mcp -a Burger.cas BURGER.bin
 IF ERRORLEVEL 1 goto errorOut
 
-tools\mcp -e Burger.cas BurgerBruc.wav
+tools\mcp -e Burger.cas BurgerPK8000.wav
 IF ERRORLEVEL 1 goto errorOut
-
-echo Build completed successfully
 
 exit /B 0
 
 :errorOut
 echo Build Error
-

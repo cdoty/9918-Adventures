@@ -4,7 +4,8 @@ IF ERRORLEVEL 1 goto errorOut
 ..\tools\PadFile 255 32768 Burger.bin
 IF ERRORLEVEL 1 goto errorOut
 
-delete Burger.rom
+if exist Burger.rom delete Burger.rom
+
 copy Burger.bin Burger.rom
 
 ..\tools\PadFile 255 262144 Burger.rom

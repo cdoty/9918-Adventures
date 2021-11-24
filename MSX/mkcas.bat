@@ -4,8 +4,7 @@ IF ERRORLEVEL 1 goto errorOut
 copy /b Header.bin+Cassette.bin BURGER.bin
 IF ERRORLEVEL 1 goto errorOut
 
-del Burger.cas
-IF ERRORLEVEL 1 goto errorOut
+if exist Burger.cas del Burger.cas
 
 tools\mcp -a Burger.cas BURGER.bin
 IF ERRORLEVEL 1 goto errorOut

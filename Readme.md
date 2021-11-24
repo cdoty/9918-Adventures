@@ -19,6 +19,7 @@
 * **Spectravideo** 318 and **328** computers.
 * **Texas Instruments TI-99/4a computer**.
 * **Tomy Tutor computer.**  
+* PK8000 computer and Photon arcade system.
   
 &emsp;&ensp;&nbsp;**Systems with a bold name were testing using actual hardware with a cartridge, disk, and/or cassette.**
 

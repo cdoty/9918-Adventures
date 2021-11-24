@@ -21,5 +21,4 @@ DISABLE_INTERRUPTS:	; Disable interrupts during compressed data transfer
 %include "..\Shared\BitBusterDepackZ80IO.s"
 %include "..\Shared\DataZ80.s"
 RomEnd:
-	db	00h
 	

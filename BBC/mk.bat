@@ -3,7 +3,7 @@ IF ERRORLEVEL 1 goto errorOut
 
 Tools\CreateInf burger.inf burger BURGER 6400 6400 0 1
 
-del Burger.ssd
+if exist Burger.ssd del Burger.ssd
 
 perl tools/beebtools/beeb blank_ssd Burger.ssd
 IF ERRORLEVEL 1 goto errorOut

@@ -1,4 +1,4 @@
-;	db	FEh
 	dw	ROMStart
-	dw	ROMEnd
+	dw	ROMEnd - 1
 	dw	start
+	

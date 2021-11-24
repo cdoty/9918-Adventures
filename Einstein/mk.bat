@@ -1,7 +1,8 @@
 ..\tools\tniASM\tniasm.exe Cart.s
 IF ERRORLEVEL 1 goto errorOut
 
-del Burger.dsk
+if exist Burger.dsk del Burger.dsk
+
 copy bootDisk\Boot.dsk Burger.dsk
 
 REM ..\tools\appmake +cpmdisk -f einstein -b Burger.com -o Burger.dsk
