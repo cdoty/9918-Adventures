@@ -74,3 +74,6 @@ Palette entries 6 and 12 are completely different colors, when compared to the T
 
 color table ($A0 - $BF)	Color table for monochrome mode. It is only used if bit 5, of video mode, is set.  
 The format is the same as the color data, the upper 4 bits is background color and the lower 4 bits is foreground color.
+
+# Compression
+File compress is implemented with [ZX0](https://github.com/einar-saukas/ZX0), based on this [code](https://github.com/ivagorRetrocomp/DeZX).

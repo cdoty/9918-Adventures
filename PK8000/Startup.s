@@ -1,9 +1,7 @@
 start:
 	di
 	
-	mvi		a, $FC
-	out		BankSwap
-
+	call	enableBank1Rom
 	call	setupMode2
 	call	clearVRAM
 	call	setupInterrupt

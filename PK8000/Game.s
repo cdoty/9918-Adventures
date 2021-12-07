@@ -3,45 +3,38 @@ startGame:
 	
 	; Transfer game tiles
 	lxi		h, GamePattern
-	lxi		d, Tile1VRAM
-	lxi		b, GamePatternSize
-	call	transferToVRAM
+	lxi		b, Tile1VRAM
+	call	decompressZX0
 
 	; Transfer game tiles
 	lxi		h, GamePattern
-	lxi		d, Tile2VRAM
-	lxi		b, GamePatternSize
-	call	transferToVRAM
+	lxi		b, Tile2VRAM
+	call	decompressZX0
 
 	; Transfer game tiles
 	lxi		h, GamePattern
-	lxi		d, Tile3VRAM
-	lxi		b, GamePatternSize
-	call	transferToVRAM
+	lxi		b, Tile3VRAM
+	call	decompressZX0
 
 	; Transfer game colors
 	lxi		h, GameColor
-	lxi		d, Color1VRAM
-	lxi		b, GameColorSize
-	call	transferToVRAM
+	lxi		b, Color1VRAM
+	call	decompressZX0
 
 	; Transfer font colors
 	lxi		h, GameColor
-	lxi		d, Color2VRAM
-	lxi		b, GameColorSize
-	call	transferToVRAM
+	lxi		b, Color2VRAM
+	call	decompressZX0
 
 	; Transfer font colors
 	lxi		h, GameColor
-	lxi		d, Color3VRAM
-	lxi		b, GameColorSize
-	call	transferToVRAM
+	lxi		b, Color3VRAM
+	call	decompressZX0
 
 	; Transfer screen
 	lxi		h, GameScreen
-	lxi		d, ScreenVRAM
-	lxi		b, GameScreenSize
-	call	transferToVRAM
+	lxi		b, ScreenVRAM
+	call	decompressZX0
 
 	call	turnOnScreen
 

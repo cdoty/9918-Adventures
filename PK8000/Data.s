@@ -1,46 +1,23 @@
 FontColor:
-	incbin "..\Graphics\Inverted\Font.col"
-FontColorEnd:
-FontColorSize = FontColorEnd - FontColor
+	incbin "..\Graphics\ZX0\Font.col.zx0"
 
 FontPattern:
-	incbin "..\Graphics\Font.pat"
-FontPatternEnd:
-
-FontPatternSize	= FontPatternEnd - FontPattern
+	incbin "..\Graphics\ZX0\Font.pat.zx0"
 
 Title1Screen:
-	incbin "..\Graphics\Title1.mgb"
-Title1ScreenEnd:
-
-Title1ScreenSize	= Title1ScreenEnd - Title1Screen
+	incbin "..\Graphics\ZX0\Title1.mgb.zx0"
 
 Title2Screen:
-	incbin "..\Graphics\Title2.mgb"
-Title2ScreenEnd:
-
-Title2ScreenSize	= Title2ScreenEnd - Title2Screen
+	incbin "..\Graphics\ZX0\Title2.mgb.zx0"
 
 Title3Screen:
-	incbin "..\Graphics\Title3.mgb"
-Title3ScreenEnd:
-
-Title3ScreenSize	= Title3ScreenEnd - Title3Screen
+	incbin "..\Graphics\ZX0\Title3.mgb.zx0"
 
 GameColor:
-	incbin "..\Graphics\Inverted\Game.col"
-GameColorEnd:
-
-GameColorSize	= GameColorEnd - GameColor
+	incbin "..\Graphics\ZX0\Game.col.zx0"
 
 GamePattern:
-	incbin "..\Graphics\Game.pat"
-GamePatternEnd:
-
-GamePatternSize	= GamePatternEnd - GamePattern
+	incbin "..\Graphics\ZX0\Game.pat.zx0"
 
 GameScreen:
-	incbin "..\Graphics\Game.mgb"
-GameScreenEnd:
-
-GameScreenSize	= GameScreenEnd - GameScreen
+	incbin "..\Graphics\ZX0\Game.mgb.zx0"

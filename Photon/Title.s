@@ -3,45 +3,38 @@ ScreenDelay	= 120
 showTitle:
 	; Transfer font tiles
 	lxi		h, FontPattern
-	lxi		d, Tile1VRAM
-	lxi		b, FontPatternSize
-	call	transferToVRAM
+	lxi		b, Tile1VRAM	
+	call	decompressZX0
 
 	; Transfer font tiles
 	lxi		h, FontPattern
-	lxi		d, Tile2VRAM
-	lxi		b, FontPatternSize
-	call	transferToVRAM
+	lxi		b, Tile2VRAM
+	call	decompressZX0
 
 	; Transfer font tiles
 	lxi		h, FontPattern
-	lxi		d, Tile3VRAM
-	lxi		b, FontPatternSize
-	call	transferToVRAM
+	lxi		b, Tile3VRAM
+	call	decompressZX0
 
 	; Transfer font colors
 	lxi		h, FontColor
-	lxi		d, Color1VRAM
-	lxi		b, FontColorSize
-	call	transferToVRAM
+	lxi		b, Color1VRAM
+	call	decompressZX0
 
 	; Transfer font colors
 	lxi		h, FontColor
-	lxi		d, Color2VRAM
-	lxi		b, FontColorSize
-	call	transferToVRAM
+	lxi		b, Color2VRAM
+	call	decompressZX0
 
 	; Transfer font colors
 	lxi		h, FontColor
-	lxi		d, Color3VRAM
-	lxi		b, FontColorSize
-	call	transferToVRAM
+	lxi		b, Color3VRAM
+	call	decompressZX0
 
 	; Transfer screen
 	lxi		h, Title1Screen
-	lxi		d, ScreenVRAM
-	lxi		b, Title1ScreenSize
-	call	transferToVRAM
+	lxi		b, ScreenVRAM
+	call	decompressZX0
 
 	call	turnOnScreen
 
@@ -54,9 +47,8 @@ showTitle:
 	
 	; Transfer screen
 	lxi		h, Title2Screen
-	lxi		d, ScreenVRAM
-	lxi		b, Title2ScreenSize
-	call	transferToVRAM
+	lxi		b, ScreenVRAM
+	call	decompressZX0
 
 	call	turnOnScreen
 
@@ -69,9 +61,8 @@ showTitle:
 	
 	; Transfer screen
 	lxi		h, Title3Screen
-	lxi		d, ScreenVRAM
-	lxi		b, Title3ScreenSize
-	call	transferToVRAM
+	lxi		b, ScreenVRAM
+	call	decompressZX0
 
 	call	turnOnScreen
 

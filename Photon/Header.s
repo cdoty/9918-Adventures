@@ -3,15 +3,17 @@
 	di
 	jmp	start
 
-	org	$20
+	org		$20
 	ret
 
-	org	$38
+	org		$38
 	call	VBlankHandler
+
 	ei
+
 	ret
 	
-	org	$80
+	org		$80
 start:
 	mvi		a, $82		; PPI Configuration
 	out		PPI8255_1	; Set Port A and B to Mode 0, and set Port B for input.

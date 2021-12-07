@@ -13,9 +13,9 @@ StartRelocate:
 	include "Data.s"
 	include "Title.s"
 	include "Game.s"
+	include "../Shared/dzx0-8080.s"
 
 	rend
 
 EndRelocate:
-
 	org	ROMStart + ROMSize
