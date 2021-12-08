@@ -1,4 +1,4 @@
-# 9918 Adventures is a starter assembly language project for the following TMS-9918a based systems:
+# 9918 Adventures is a starter assembly language project for the following TMS-9918a based systems
 * **Apple II** with E-Z Color Graphics Interface, Super Sprite, Third Millenium Arcade, or **AppleTi** boards.
 * BBC with Logotron Sprite Board card.
 * **BBC Bridge Companion** with modifications to enable full 16k VRAM access.
