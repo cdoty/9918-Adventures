@@ -1,6 +1,6 @@
 # PK8000/Photon system documentations
-* The graphics hardware is nearly a clone of the TMS-9918a, but lacks sprite hardware.
-* The PK8000 supports a keyboard and two joysticks with two buttons each.
+*  The graphics hardware is nearly a clone of the TMS-9918a, but lacks sprite hardware.
+*  The PK8000 supports a keyboard and two joysticks with two buttons each.
 
 # Memory locations
 Ram/Rom swap ($80): Four 16k banks can be swapped in and out. Only affects read, writes always go to ram.  
