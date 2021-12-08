@@ -101,11 +101,9 @@ bool Cassette::save(const std::string& _strFilename)
 		t_c	= 9;
 	}
 
-	strncpy((char*)buffer + 1, strName.c_str(), t_c);
-
 	for (int iLoop = 0; iLoop < t_c; ++iLoop)
 	{
-		buffer[iLoop + 1]	= toupper(buffer[iLoop + 1]);
+		buffer[iLoop + 1]	= toupper(strName[iLoop]);
 	}
 
 	// Set load address

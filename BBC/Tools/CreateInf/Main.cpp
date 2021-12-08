@@ -34,14 +34,14 @@ int main(int argc, char* argv[])
 
 	pFile->close();
 
-	uint32_t	iLoadAddress	= (uint32_t)std::stoi(argv[4]);
-	uint32_t	iStartAddress	= (uint32_t)std::stoi(argv[5]);
-	uint32_t	iAttribute		= (uint32_t)std::stoi(argv[6]);
-	uint32_t	iType			= (uint32_t)std::stoi(argv[7]);
+	uint32_t	loadAddress	= (uint32_t)std::stoi(argv[4]);
+	uint32_t	startAddress	= (uint32_t)std::stoi(argv[5]);
+	uint32_t	attribute		= (uint32_t)std::stoi(argv[6]);
+	uint32_t	type			= (uint32_t)std::stoi(argv[7]);
 
 	char	szValue[1024];
 
-	sprintf(szValue, "$.%s %.6X %.6X %.6X ATTR=%d TYPE=%d", argv[3], iLoadAddress, iStartAddress, iLength, iAttribute, iType);
+	sprintf(szValue, "$.%s %.6X %.6X %.6X ATTR=%ud TYPE=%ud", argv[3], loadAddress, startAddress, iLength, attribute, type);
 
 	if (false == pFile->create(argv[1]))
 	{

@@ -71,3 +71,4 @@ BBC/burger
 *.mp3
 Debug/
 Release/
+*.user

@@ -560,6 +560,6 @@ std::string File::getFilenameFromPath(const std::string& _strPath)
 		strFilename.erase(strFilename.find_last_of("."), string::npos);
 	}
 
-	return	strFilename.c_str();
+	return	strFilename;
 #endif
 }
