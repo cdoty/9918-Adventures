@@ -179,24 +179,24 @@ getMySlot:
 	push	bc
 	push	hl
 	
-	in		a, (PrimarySlotReg)	; Read primary slot register
-	rrca						; Move it to bit 0,1 of A
+	in		a, (PrimarySlotReg)		; Read primary slot register
+	rrca							; Move it to bit 0,1 of A
 	rrca
-	and		00000011b			; Get bit 1,0
-	ld		c, a				; Set primary slot No.
+	and		00000011b				; Get bit 1,0
+	ld		c, a					; Set primary slot No.
 	ld		b, 0
-	ld		hl,	ExpansionTable	; See if the slot is expanded or not
+	ld		hl,	ExpansionTable		; See if the slot is expanded or not
 	add		hl, bc
-	or		(hl)				; set MSB if so
+	or		(hl)					; Set MSB if so
 	ld		c, a
-	inc		hl					; point to SLTTBL entry
+	inc		hl						; Point to SLTTBL entry
 	inc		hl
 	inc		hl
 	inc		hl
-	ld		a, (hl)				; Get what is currently output to expansion slot register
+	ld		a, (hl)					; Get what is currently output to expansion slot register
 
-	and		00001100b			; Get bits 3,2
-	or		c					; Finally form slot address
+	and		00001100b				; Get bits 3,2
+	or		c						; Finally form slot address
 
 	pop		hl
 	pop		bc
