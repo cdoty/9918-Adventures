@@ -1,6 +1,7 @@
-irq:
+irqHandler:
 	inc	NMICount
 
 	rti
-nmi:
+
+nmiHandler:
 	rti

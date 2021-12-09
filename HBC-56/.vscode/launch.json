@@ -16,8 +16,8 @@
 				"--rom",
 				"${workspaceFolder}\\Burger.o"
 			],
-			"program": "e:/RetroDev/Burger/HBC-56/Tools/Emulators/Hbc56Emu.exe",
-			"cwd": "e:/RetroDev/Burger/HBC-56/Tools/Emulators"
+			"program": "${workspaceFolder}\\Tools\\Emulators\\Hbc56Emu.exe",
+			"cwd": "${workspaceFolder}\\Tools\\Emulators"
 		}
 	]
 }
