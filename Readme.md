@@ -4,7 +4,7 @@
 * **BBC Bridge Companion** with modifications to enable full 16k VRAM access.
 * Bit90 computer.
 * Frael Bruc 100 computer.
-* **Colecovision and Adam.**
+* **Colecovision and Adam.** cartridge or Adam Digital Data Pack.
 * **VTech Creativision computer.**
 * **Einstein** TC-01 and **256**.
 * Forte arcade board.

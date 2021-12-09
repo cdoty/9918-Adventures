@@ -5,7 +5,7 @@
 %include "z80().inc"
 %include "tniasm.inc"
 
-DISABLE_INTERRUPTS:	; Disable interrupts during compressed data transfer
+DISABLE_INTERRUPTS	; Disable interrupts during compressed data transfer
 WRITE_OFFSET_2		; Change depack routine to use an offset of 2
 
 %include "Defines.inc"
