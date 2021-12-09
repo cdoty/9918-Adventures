@@ -71,4 +71,5 @@ BBC/burger
 *.mp3
 Debug/
 Release/
+tniASM/
 *.user
