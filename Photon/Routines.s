@@ -1,14 +1,14 @@
 setupMode2:
-	mvi	a, $10		; Set mode 2
+	mvi	a, $10					; Set mode 2
 	out	VideoMode
 
-	mvi	a, $00		; Turn off screen
+	mvi	a, $00					; Turn off screen
 	out	VideoEnable	
 
-	mvi	a, $00		; Set border color
+	mvi	a, $00					; Set border color
 	out	ScreenColor
 
-	mvi	a, $00		; Pattern data memory location for Mode 0 and 1. Unused in Mode 2.
+	mvi	a, $00					; Pattern data memory location for Mode 0 and 1. Unused in Mode 2.
 	out	TextData
 
 	mvi	a, ScreenVRAM / $400	; Name table memory location

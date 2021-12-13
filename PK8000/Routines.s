@@ -1,32 +1,24 @@
 setupMode2:
-	mvi	a, $10		; Set mode 2
+	mvi	a, $10			; Set mode 2
 	out	VideoMode
 
-	mvi	a, $00		; Turn off screen
+	mvi	a, $00			; Turn off screen
 	out	VideoEnable	
 
-	mvi	a, $00		; Set border color
+	mvi	a, $00			; Set border color
 	out	ScreenColor
 
-;	mvi	a, $0000 / $400			; Pattern data memory location for Mode 0 and 1. Unused in Mode 2.
-;	out	TextData
-	mvi	a, $00
+	mvi	a, $00			; Pattern data memory location for Mode 0 and 1. Unused in Mode 2.
 	sta	ShadowTextData
 
-;	mvi	a, ScreenVRAM / $400	; Name table memory location
-;	out	NameTable
-	mvi	a, >ScreenVRAM			; Name table memory location
+	mvi	a, >ScreenVRAM	; Name table memory location
 	sta	ShadowNameTable
 
-;	mvi	a, Color1VRAM / $400	; Color data memory location
-;	out	ColorData	
-	mvi	a, >Color1VRAM			; Color data memory location
+	mvi	a, >Color1VRAM	; Color data memory location
 	cma
 	sta	ShadowColorData
 
-;	mvi	a, Tile1VRAM / $400		; Pattern data memory location
-;	out	PatternData
-	mvi	a, >Tile1VRAM			; Pattern data memory location
+	mvi	a, >Tile1VRAM	; Pattern data memory location
 	cma
 	sta	ShadowPatternData
 

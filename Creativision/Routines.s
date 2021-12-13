@@ -10,7 +10,7 @@ turnOnScreen:
 	rts
 
 turnOffScreen:
-	lda	#$A2		; Enable 16K VRAM, NMI interrupt, and 16x16 sprites. Disable Screen
+	lda	#$82		; Enable 16K VRAM, and 16x16 sprites. Disable Screen and NMI interrupt
 	sta	ZPStart
 	
 	lda	#$81

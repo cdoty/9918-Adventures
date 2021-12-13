@@ -3,37 +3,37 @@ ScreenDelay	%equ	120
 showTitle:
 	; Transfer font tiles
 	ld		hl, FontPatternStart
-	ld		de, 0000h
+	ld		de, Tile1VRAM
 	call	decompressToVRAM
 	
 	; Transfer font tiles
 	ld		hl, FontPatternStart
-	ld		de, 0800h
+	ld		de, Tile2VRAM
 	call	decompressToVRAM
 	
 	; Transfer font tiles
 	ld		hl, FontPatternStart
-	ld		de, 1000h
+	ld		de, Tile3VRAM
 	call	decompressToVRAM
 	
 	; Transfer color table
 	ld		hl, FontColorStart
-	ld		de, 2000h
+	ld		de, Color1VRAM
 	call	decompressToVRAM
 	
 	; Transfer color table
 	ld		hl, FontColorStart
-	ld		de, 2800h
+	ld		de, Color2VRAM
 	call	decompressToVRAM
 	
 	; Transfer color table
 	ld		hl, FontColorStart
-	ld		de, 3000h
+	ld		de, Color3VRAM
 	call	decompressToVRAM
 	
 	; Transfer first screen	
 	ld		hl, Title1Start
-	ld		de, 3800h
+	ld		de, ScreenVRAM
 	call	decompressToVRAM
 
 	; Wait for timer

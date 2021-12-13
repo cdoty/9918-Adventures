@@ -1,42 +1,34 @@
 setMode2:
-	lda	#$02
+	lda	#$02						; Disable external VDP, set M3 for Graphics mode 2
 	ldx	#$80
-
 	jsr	writeVDPReg
 	
-	lda	#$82			; Do not enable interrupts, the Apple IIgs will enter the monitor on startup.
-	ldx	#$81
-	
+	lda	#$82						; Enable 16K VRAM, and 16x16 sprites. Disable screen and NMI interrupt.
+	ldx	#$81						; Do not enable interrupts, the Apple IIgs will enter the monitor on startup.
 	jsr writeVDPReg
 
-	lda	#$0E
-	ldx	#$82
-	
+	lda	#ScreenVRAM / $400			; Set Name Table location.
+	ldx	#$82	
 	jsr	writeVDPReg
 	
-	lda	#$FF
-	ldx	#$83
-	
+	lda	#(Color1VRAM / $40) | $7F	; Set Color Table location.
+	ldx	#$83	
 	jsr writeVDPReg
 
-	lda	#$03
-	ldx	#$84
-	
+	lda	#(<Tile1VRAM / $8) | 3		; Set Pattern Table location. Assembler doesn't like $0000 / $800
+	ldx	#$84	
 	jsr writeVDPReg
 	
-	lda	#$76
-	ldx	#$85
-	
+	lda	#SpriteAttributes / $80		; Set Sprite Attribute Table location.
+	ldx	#$85	
 	jsr writeVDPReg
 	
-	lda	#$03
-	ldx	#$86
-	
+	lda	#SpritePattern / $800		; Set Sprite Pattern Table location.
+	ldx	#$86	
 	jsr writeVDPReg
 	
-	lda	#$00
-	ldx	#$87
-	
+	lda	#$00						; Set screen color
+	ldx	#$87	
 	jsr writeVDPReg
 
 	rts

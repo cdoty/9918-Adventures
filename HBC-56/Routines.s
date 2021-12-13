@@ -1,54 +1,47 @@
 setMode2:
-	lda	#$02
+	lda	#$02						; Disable external VDP, set M3 for Graphics mode 2
 	sta	ZPStart
 	lda	#$80
 	sta	ZPStart + 1
-
 	jsr	writeVDPReg
 	
-	lda	#$A2
+	lda	#$A2						; Enable 16K VRAM, NMI interrupt, and 16x16 sprites. Disable screen.
 	sta	ZPStart
 	lda	#$81
 	sta	ZPStart + 1
-	
 	jsr writeVDPReg
 	
-	lda	#$0E
+	lda	#ScreenVRAM / $400			; Set Name Table location.
 	sta	ZPStart
 	lda	#$82
 	sta	ZPStart + 1
-	
 	jsr	writeVDPReg
 	
-	lda	#$FF
+	lda	#(Color1VRAM / $40) | $7F	; Set Color Table location.
 	sta	ZPStart
 	lda	#$83
 	sta	ZPStart + 1
-	
 	jsr writeVDPReg
 
-	lda	#$03
+	lda	#(<Tile1VRAM / $8) | 3		; Set Pattern Table location. Assembler doesn't like $0000 / $800
 	sta	ZPStart
 	lda	#$84
 	sta	ZPStart + 1
-	
 	jsr writeVDPReg
 	
-	lda	#$76
+	lda	#SpriteAttributes / $80		; Set Sprite Attribute Table location.
 	sta	ZPStart
 	lda	#$85
-	sta	ZPStart + 1
-	
+	sta	ZPStart + 1	
 	jsr writeVDPReg
 	
-	lda	#$03
+	lda	#SpritePattern / $800		; Set Sprite Pattern Table location.
 	sta	ZPStart
 	lda	#$86
-	sta	ZPStart + 1
-	
+	sta	ZPStart + 1	
 	jsr writeVDPReg
 	
-	lda	#$00
+	lda	#$00						; Set screen color
 	sta	ZPStart
 	lda	#$87
 	sta	ZPStart + 1

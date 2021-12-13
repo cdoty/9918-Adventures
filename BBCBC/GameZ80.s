@@ -2,39 +2,39 @@ startGame:
 	; Turn off screen
 	call	turnOffScreen
 	
-	; Transfer game color table
-	ld		hl, GameColorStart
-	ld		de, ColorTable
-	call	decompressToVRAM
-	
-	; Transfer game color table
-	ld		hl, GameColorStart
-	ld		de, ColorTable + 800h
-	call	decompressToVRAM
-	
-	; Transfer game color table
-	ld		hl, GameColorStart
-	ld		de, ColorTable + 1000h
+	; Transfer game tiles
+	ld		hl, GamePatternStart
+	ld		de, Tile1VRAM
 	call	decompressToVRAM
 	
 	; Transfer game tiles
 	ld		hl, GamePatternStart
-	ld		de, PatternTable
+	ld		de, Tile2VRAM
 	call	decompressToVRAM
 	
 	; Transfer game tiles
 	ld		hl, GamePatternStart
-	ld		de, PatternTable + 800h
+	ld		de, Tile3VRAM
 	call	decompressToVRAM
 	
-	; Transfer game tiles
-	ld		hl, GamePatternStart
-	ld		de, PatternTable + 1000h
+	; Transfer game color table
+	ld		hl, GameColorStart
+	ld		de, Color1VRAM
+	call	decompressToVRAM
+	
+	; Transfer game color table
+	ld		hl, GameColorStart
+	ld		de, Color2VRAM
+	call	decompressToVRAM
+	
+	; Transfer game color table
+	ld		hl, GameColorStart
+	ld		de, Color3VRAM
 	call	decompressToVRAM
 	
 	; Transfer game screen	
 	ld		hl, GameStart
-	ld		de, NameTable
+	ld		de, ScreenVRAM
 	call	decompressToVRAM
 
 	; Turn on screen

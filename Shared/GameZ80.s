@@ -4,37 +4,37 @@ startGame:
 	
 	; Transfer game tiles
 	ld		hl, GamePatternStart
-	ld		de, 0000h
+	ld		de, Tile1VRAM
 	call	decompressToVRAM
 	
 	; Transfer game tiles
 	ld		hl, GamePatternStart
-	ld		de, 0800h
+	ld		de, Tile2VRAM
 	call	decompressToVRAM
 	
 	; Transfer game tiles
 	ld		hl, GamePatternStart
-	ld		de, 1000h
+	ld		de, Tile3VRAM
 	call	decompressToVRAM
 	
 	; Transfer game color table
 	ld		hl, GameColorStart
-	ld		de, 2000h
+	ld		de, Color1VRAM
 	call	decompressToVRAM
 	
 	; Transfer game color table
 	ld		hl, GameColorStart
-	ld		de, 2800h
+	ld		de, Color2VRAM
 	call	decompressToVRAM
 	
 	; Transfer game color table
 	ld		hl, GameColorStart
-	ld		de, 3000h
+	ld		de, Color3VRAM
 	call	decompressToVRAM
 	
 	; Transfer game screen	
 	ld		hl, GameStart
-	ld		de, 3800h
+	ld		de, ScreenVRAM
 	call	decompressToVRAM
 
 	; Turn on screen

@@ -1,28 +1,28 @@
 setMode2:
-	mov		r11, r10		; Save return address
+	mov		r11, r10									; Save return address
 
-	li		r1, 0280h		; Disable external VDP interrupt, set M2 for Graphics mode 2
+	li		r1, 0280h									; Disable external VDP interrupt, set M2 for Graphics mode 2
 	bl		@writeVDPReg
 
-	li		r1, 0A281h		; Enable 16K VRAM, Screen, NMI interrupt, and 16x16 sprites
+	li		r1, 0A281h									; Enable 16K VRAM, Screen, NMI interrupt, and 16x16 sprites
 	bl		@writeVDPReg
 
-	li		r1, 0E82h		; Set Name Table location to 3800h, in VRAM
+	li		r1, (ScreenVRAM / 400h) << 8 | 82h			; Set Name Table location to 3800h, in VRAM
 	bl		@writeVDPReg
 
-	li		r1, 0FF83h		; Set Color Table location to 2000h, in VRAM
+	li		r1, ((Color1VRAM / 40h) | 7Fh) << 8 | 83h	; Set Color Table location to 2000h, in VRAM
 	bl		@writeVDPReg
 
-	li		r1, 0x0384		; Set Pattern Table location to 0000h, in VRAM
+	li		r1, ((Tile1VRAM / 800h) | 3) << 8 | 84h		; Set Pattern Table location to 0000h, in VRAM
 	bl		@writeVDPReg
 
-	li		r1, 7685h		; Set Sprite Attribute Table location to 3800h, in VRAM
+	li		r1, (SpriteAttributes / 80h) << 8 |85h		; Set Sprite Attribute Table location to 3800h, in VRAM
 	bl		@writeVDPReg
 
-	li		r1, 0386h		; Set Sprite Pattern Table location to 1800h, in VRAM
+	li		r1, (SpritePattern / 800h) << 8 | 86h		; Set Sprite Pattern Table location to 1800h, in VRAM
 	bl		@writeVDPReg
 
-	li		r1, 0087h		; Set background color to black
+	li		r1, 0087h									; Set background color to black
 	bl		@writeVDPReg
 
 	b		*r10
