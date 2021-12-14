@@ -5,7 +5,7 @@
 * Bit90 computer.
 * Frael Bruc 100 computer.
 * **Colecovision and Adam.** cartridge or Adam Digital Data Pack.
-* **VTech Creativision computer.**
+* VTech Creativision computers, including **Dick Smith Wizzard** and Salora Manager/VTech Laser 2001.
 * **Einstein** TC-01 and **256**.
 * Forte arcade board.
 * hbc-56 homebrew computer.

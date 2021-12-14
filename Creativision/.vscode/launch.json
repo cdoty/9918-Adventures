@@ -9,7 +9,7 @@
 			"type": "cppvsdbg",
 			"request": "launch",
 			"args" : [
-				"wizzard",
+				"lasr2001",
 				"-cart",
 				"${workspaceFolder}\\Burger.bin",
 				"-debug"

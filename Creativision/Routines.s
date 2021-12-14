@@ -24,7 +24,7 @@ turnOffScreen:
 writeVDPReg:
 	lda	VDPBase + $1000	; Ensure we are writing to the first byte
 
-	lda	ZPStart			; Write VDP data`
+	lda	ZPStart			; Write VDP register
 	sta	VDPBase + $1001
 
 	lda	ZPStart + 1
@@ -109,6 +109,8 @@ TransferSamePage:
 ; ZPStart: VRAM address
 ; Wipes out x, y, ZPStart+4/+5
 decompressToVRAM:
+	sei
+
 	; Always load file zero from compressed data
 	ldx	#0
 	ldy	#0
@@ -138,8 +140,11 @@ decompressToVRAMLoop:
 	dec	ZPStart + 5
 	bne	decompressToVRAMLoop
 
+	cli
+	
 	rts
 
+; Clear timer
 clearTimer:
 	lda	#0
 	sta	NMICount
