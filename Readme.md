@@ -4,7 +4,7 @@
 * **BBC Bridge Companion** with modifications to enable full 16k VRAM access.
 * Bit90 computer.
 * Frael Bruc 100 computer.
-* **Colecovision and Adam.** cartridge or Adam Digital Data Pack.
+* **Colecovision and Coleco Adam** using a cartridge or Adam Digital Data Pack.
 * VTech Creativision computers, including **Dick Smith Wizzard**, Salora Manager, and VTech Laser 2001.
 * **Einstein** TC-01 and **256**.
 * Forte arcade board.
@@ -12,13 +12,13 @@
 * **Sord M5**.
 * **MSX1 computer.**
 * **Memotech MTX computer.**
-* Nichibutsu My Vision.
+* Nichibutsu My Vision game system.
 * **Hanimex Pencil II computer.**
 * **Casio PV-2000 computer.**
-* **Sega SG-1000**, **SC-3000**, SF-7000, and, **Othello Multivision** computers.
+* **Sega SG-1000** and **Othello Multivision** game systems and **SC-3000** and SF-7000 computers.
 * **Spectravideo** 318 and **328** computers.
 * **Texas Instruments TI-99/4a computer**.
-* **Tomy Tutor computer.**  
+* **Tomy Tutor and Pyūta (ぴゅう太) computers.**  
 * PK8000 computer and Photon arcade system.
   
 &emsp;&ensp;&nbsp;**Systems with a bold name were testing using actual hardware with a cartridge, disk, and/or cassette.**
