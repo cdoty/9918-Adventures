@@ -20,6 +20,7 @@
 * **Texas Instruments TI-99/4a computer**.
 * **Tomy Tutor and Pyūta (ぴゅう太) computers.**  
 * PK8000 computer and Photon arcade system.
+* Dragon 32/64 and Tandy Color Computer with Premier Microsystems Sprites, WordPak 2+, or Super Sprite FM+ addons.  
   
 &emsp;&ensp;&nbsp;**Systems with a bold name were testing using actual hardware with a cartridge, disk, and/or cassette.**
 
