@@ -1,3 +1,4 @@
+; Set mode 2
 setMode2:
 	lda	#$02						; Disable external VDP, set M3 for Graphics mode 2
 	sta	ZPStart
@@ -47,6 +48,7 @@ setMode2:
 	sta	ZPStart + 1
 	jsr writeVDPReg
 	
+; Turn on screen
 turnOnScreen:
 	lda	#$E2		; Enable 16K VRAM, Screen, NMI interrupt, and 16x16 sprites
 	sta	ZPStart
@@ -56,6 +58,7 @@ turnOnScreen:
 
 	rts
 
+; Turn off screen
 turnOffScreen:
 	lda	#$A2		; Enable 16K VRAM, NMI interrupt, and 16x16 sprites. Disable Screen
 	sta	ZPStart
@@ -65,6 +68,7 @@ turnOffScreen:
 
 	rts
 
+; Write VDP register
 ; ZPStart: Data
 ; ZPStart+1: Register
 ; Wipes out x, y, ZPStart
@@ -79,6 +83,7 @@ writeVDPReg:
 
 	rts
 
+; Clear VRAM
 clearVRAM:
 	ldy	#$00			; Set the total number of bytes to clear, adjust for loop
 	lda	#$40
@@ -106,6 +111,7 @@ ClearVRAMLoop:
 	
 	rts
 
+; Transfer to VRAM
 ; ZPStart: Source address
 ; ZPStart+2: VRAM address
 ; ZPStart+4: Size
@@ -142,6 +148,7 @@ TransferSamePage:
 
 	rts
 	
+; Decompress to VRAM
 ; ZPStart: VRAM address
 ; Wipes out x, y, ZPStart+4/+5
 decompressToVRAM:
@@ -182,6 +189,7 @@ clearTimer:
 
 	rts
 
+; Wait for timer or button press
 ; ZPStart: Value to wait for
 waitForTimerOrButtonPress:
 	jsr	waitForVBlank

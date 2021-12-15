@@ -1,6 +1,6 @@
 del	*.zx0
 
-copy ..\*.col
+copy ..\Inverted\*.col
 copy ..\*.pat
 copy ..\*.mgb
 

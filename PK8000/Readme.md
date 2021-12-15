@@ -76,4 +76,4 @@ color table ($A0 - $BF)	Color table for monochrome mode. It is only used if bit 
 The format is the same as the color data, the upper 4 bits is background color and the lower 4 bits is foreground color.
 
 # Compression
-File compress is implemented with [ZX0](https://github.com/einar-saukas/ZX0), based on this [code](https://github.com/ivagorRetrocomp/DeZX).
+File compression is implemented with [ZX0](https://github.com/einar-saukas/ZX0), based on this [code](https://github.com/ivagorRetrocomp/DeZX).

@@ -1,0 +1,1 @@
+ScreenDelay	equ	120
