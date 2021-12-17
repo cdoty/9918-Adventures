@@ -4,8 +4,13 @@ IF ERRORLEVEL 1 goto errorOut
 if exist Burger.dsk del Burger.dsk
 
 Tools\imgtool\imgtool create coco_vdk_dgndos Burger.vdk
+IF ERRORLEVEL 1 goto errorOut
+
 Tools\imgtool\imgtool put coco_vdk_dgndos Burger.vdk DragonBoot.bas BOOT.BAS --filter=dragonbas
+IF ERRORLEVEL 1 goto errorOut
+
 Tools\imgtool\imgtool put coco_vdk_dgndos Burger.vdk Burger.bin BURGER.BIN
+IF ERRORLEVEL 1 goto errorOut
 
 exit /B 0
 
