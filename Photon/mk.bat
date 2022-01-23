@@ -2,6 +2,7 @@
 IF ERRORLEVEL 1 goto errorOut
 
 if not exist "e:\Mame\Roms\phklad" mkdir e:\Mame\Roms\phklad
+IF ERRORLEVEL 1 goto errorOut
 
 copy Burger.bin e:\Mame\Roms\phklad\klad.bin
 IF ERRORLEVEL 1 goto errorOut

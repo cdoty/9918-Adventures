@@ -14,6 +14,7 @@
 	ret
 	
 	org		$80
+
 start:
 	mvi		a, $82		; PPI Configuration
 	out		PPI8255_1	; Set Port A and B to Mode 0, and set Port B for input.
