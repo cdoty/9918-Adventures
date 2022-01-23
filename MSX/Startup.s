@@ -18,7 +18,7 @@ start:
 	
 	ldir
 
-	call	delay		; Delay before starting
+	call	delay			; Delay before starting
 	
 	call	setMode2		; Set mode 2
 	call	clearVRAM		; Clear VRAM
