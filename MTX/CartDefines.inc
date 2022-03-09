@@ -1,18 +1,18 @@
-CartStart			%equ	2000h
-ROMStart			%equ	2010h
-ROMSize				%equ	(8*1024)
-RAMStart			%equ	F000h
-RAMSize				%equ	200h
-StackStart			%equ	FFF0h
-VDPBase				%equ	01h
-VDPReadBase			%equ	VDPBase
-Tile1VRAM			%equ	0000h		; Tile VRAM locations
-Tile2VRAM			%equ	0800h
-Tile3VRAM			%equ	1000h
-SpritePattern		%equ	1800h		; Sprite pattern location
-Color1VRAM			%equ	2000h		; Color VRAM locations
-Color2VRAM			%equ	2800h
-Color3VRAM			%equ	3000h
-ScreenVRAM			%equ	3800h		; Screen VRAM location
-SpriteAttributes	%equ	3B00h		; Sprite attributes
-InterruptTable		%equ	FFF0h
+CartStart			= 2000h
+ROMStart			= 2010h
+ROMSize				= (8*1024)
+RAMStart			= 0F000h
+RAMSize				= 200h
+StackStart			= 0FFF0h
+VDPBase				= 01h
+VDPReadBase			= VDPBase
+Tile1VRAM			= 0000h		; Tile VRAM locations
+Tile2VRAM			= 0800h
+Tile3VRAM			= 1000h
+SpritePattern		= 1800h		; Sprite pattern location
+Color1VRAM			= 2000h		; Color VRAM locations
+Color2VRAM			= 2800h
+Color3VRAM			= 3000h
+ScreenVRAM			= 3800h		; Screen VRAM location
+SpriteAttributes	= 3B00h		; Sprite attributes
+InterruptTable		= 0FFF0h	; Interrupt table

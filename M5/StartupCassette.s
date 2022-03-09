@@ -1,4 +1,4 @@
-%org	ROMStart
+	org	ROMStart
 
 start:
 	ld		a, 1
@@ -6,8 +6,8 @@ start:
 	
 	ld		sp, StackStart	; Setup stack pointer
 
-	call	0x0E0B			; Setup VDP
-	call	0x1393			; Clear screen
+	call	0E0Bh			; Setup VDP
+	call	1393h			; Clear screen
 	
 	call	setMode2		; Set mode 2
 

@@ -1,4 +1,7 @@
-%org	RamStart
+	struct	Ram, RAMStart
 
 NMICount:
-	%res8	1
+	db	1
+
+	ends
+	

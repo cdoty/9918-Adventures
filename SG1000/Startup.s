@@ -1,16 +1,16 @@
-%org	ROMStart
+	org	ROMStart
 
 	di	
 	im	1
 	
 	jp	start
 	
-%defb   0038h-%apos	; Pad to 0038h
+	block	38h-$, 0	; Pad to 38h
 
 IRQ:
 	jp	NMIHandler
 
-%defb   0066h-%apos	; Pad to 0066h
+	block	66h-$, 0	; Pad to 66h
 NMI:
 	reti
 	nop

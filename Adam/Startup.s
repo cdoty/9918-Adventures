@@ -1,4 +1,4 @@
-%org	ROMStart
+	org	ROMStart
 
 start:
 	call	setupInterrupt	; Setup interrupt

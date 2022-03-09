@@ -3,7 +3,7 @@ setMode2:
 	ld		c, 0
 	call	writeVDPReg
 
-	ld		b, A2h						; Enable 16K VRAM, NMI interrupt, and 16x16 sprites. Disable screen.
+	ld		b, 0A2h						; Enable 16K VRAM, NMI interrupt, and 16x16 sprites. Disable screen.
 	ld		c, 1
 	call	writeVDPReg
 
@@ -35,7 +35,7 @@ setMode2:
 	
 ; Turn on screen
 turnOnScreen:
-	ld		b, E2h		; Enable 16K VRAM, Screen, NMI interrupt, and 16x16 sprites
+	ld		b, 0E2h		; Enable 16K VRAM, Screen, NMI interrupt, and 16x16 sprites
 	ld		c, 1
 	call	writeVDPReg
 
@@ -50,7 +50,7 @@ turnOffScreen:
 	ret
 
 setupInterrupt:
-	ld		a, C3h
+	ld		a, 0C3h
 
 	ld		(38h), a
 	ld		(66h), a
@@ -79,7 +79,7 @@ writeVDPReg:
 	ld	a, b				; Write VDP data`
 	out	(VDPBase + 1), a
 
-	ld	a, 80h				; Write VDP register | 0x80
+	ld	a, 80h				; Write VDP register | 80h
 	or	c
 	out	(VDPBase + 1), a
 
@@ -139,12 +139,12 @@ transferVRAMLoop:
 	
 clearTimer:
 	xor		a
-	ld		(NMICount), a
+	ld		(Ram.NMICount), a
 
 	ret
 	
 waitForTimerOrButtonPress:
-	ld	a, (NMICount)
+	ld	a, (Ram.NMICount)
 	cp	b
 	
 	jr	nz, waitForTimerOrButtonPress

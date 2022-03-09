@@ -1,23 +1,18 @@
-%include "z80r800.inc"
-%include "z80().inc"
-%include "tniasm.inc"
-%include "CassetteDefines.inc"
+	output	Header.bin
 
-%outfile "Header.bin"
+	include	Header.s
 
-%include "Header.s"
+	output	Cassette.bin
 
-%outfile "Cassette.bin"
-%symfile "Burger.map"
-
-%include "RamDefines.inc"
-%include "CassetteStartup.s"
-%include "..\Shared\TitleZ80.s"
-%include "..\Shared\GameZ80.s"
-%include "Routines.s"
-%include "Interrupt.s"
-%include "..\Shared\BitBusterDepackZ80IO.s"
-%include "..\Shared\DataZ80.s"
-RomEnd:
+	include CassetteDefines.inc
+	include	RamDefines.inc
+	include	CassetteStartup.s
+	include	../Shared/TitleZ80.s
+	include	../Shared/GameZ80.s
+	include	Routines.s
+	include	Interrupt.s
+	include	../Shared/BitBusterDepackZ80IO.s
+	include	../Shared/DataZ80.s
+ROMEnd:
 	db	00h
 	

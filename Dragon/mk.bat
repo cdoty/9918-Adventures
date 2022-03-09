@@ -12,6 +12,8 @@ IF ERRORLEVEL 1 goto errorOut
 Tools\imgtool\imgtool put coco_vdk_dgndos Burger.vdk Burger.bin BURGER.BIN
 IF ERRORLEVEL 1 goto errorOut
 
+echo Build completed successfully
+
 exit /B 0
 
 :errorOut

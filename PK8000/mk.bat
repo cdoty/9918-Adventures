@@ -9,6 +9,8 @@ IF ERRORLEVEL 1 goto errorOut
 tools\mcp -e Burger.cas BurgerPK8000.wav
 IF ERRORLEVEL 1 goto errorOut
 
+echo Build completed successfully
+
 exit /B 0
 
 :errorOut

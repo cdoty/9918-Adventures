@@ -1,6 +1,6 @@
-%org	ROMStart
+	org	ROMStart
 
-	; Jump to start location, must be jp and not jr. The system looks for 0xC3 to identify a cartridge.
+	; Jump to start location, must be jp and not jr. The system looks for C3h to identify a cartridge.
 	jp		start
 	
 start:

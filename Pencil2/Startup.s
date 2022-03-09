@@ -1,6 +1,7 @@
-%org	ROMStart
+	org	ROMStart
 
-%def8	"COPYRIGHT SOUNDIC"	; Boot message
+	db	"COPYRIGHT SOUNDIC"	; Boot message
+
 	jp	start				; Start of code
 	jp	NMIHandler
 	jp	RST08H
@@ -11,9 +12,9 @@
 	jp	RST30H
 	jp	IM1Handler
 	
-%defb   8034h-%apos							; Pad to 8034h
-%def8	"RASTERSOFT!BURGER INVADERS!2020"	; Cartridge title
-%def8	0
+	db   8034h-$, 0							; Pad to 8034h
+	db	"RASTERSOFT!BURGER INVADERS!2020"	; Cartridge title
+	db	0
 
 RST08H:
 	ret
@@ -36,6 +37,7 @@ RST30H:
 start:
 	call	setMode2	; Set mode 2
 	call	clearVRAM	; Clear VRAM
+	
 	call	showTitle	; Show title
 	call	startGame	; Start game
 	

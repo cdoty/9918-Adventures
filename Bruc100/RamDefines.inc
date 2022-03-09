@@ -1,7 +1,9 @@
-%org	RamStart
+	struct	Ram, RAMStart
 
 OldInterrupt:
-	%res8	5
+	db	5
 
 NMICount:
-	%res8	1
+	db	1
+
+	ends

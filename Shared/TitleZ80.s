@@ -1,4 +1,4 @@
-ScreenDelay	%equ	120
+ScreenDelay	= 120
 
 showTitle:
 	; Transfer font tiles

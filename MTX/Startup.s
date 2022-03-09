@@ -1,4 +1,4 @@
-%org	ROMStart
+	org	ROMStart
 
 StartCart:	
 start:
@@ -6,8 +6,8 @@ start:
 	im		2
 	ld		sp, StackStart
 	
-	call	setMode2	; Set mode 2
-	call	clearVRAM	; Clear VRAM
+	call	setMode2				; Set mode 2
+	call	clearVRAM				; Clear VRAM
 
 	call	resetCTC
 
@@ -21,8 +21,8 @@ start:
 	
 	call	setupInterrupt
 	
-	call	showTitle	; Show title
-	call	startGame	; Start game
+	call	showTitle				; Show title
+	call	startGame				; Start game
 	
 endlessLoop:
 	jp		endlessLoop

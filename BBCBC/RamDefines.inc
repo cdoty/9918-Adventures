@@ -1,19 +1,21 @@
-%org	RamStart
-
-SpriteTable:
-	%res8	128
+	struct	Ram, RAMStart
 
 SpriteOrder:
-	%res8	32
+	ds	32
+
+	ds	3
+NMICount:
+	ds	1
+
+	ds	0Ch
+
+InputTable:	
+	ds	0Bh
+
+SpriteTable:
+	ds	128
 
 WorkBuffer:
-	%res8	64
+	ds	64
 
-
-%org	RamStart + 0x23
-NMICount:
-	%res8	1
-
-%org	RamStart + 0x30
-InputTable:	
-	%res8	0x0B
+	ends

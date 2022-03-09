@@ -3,7 +3,7 @@ setMode2:
 	ld		c, 0
 	call	writeVDPReg
 
-	ld		b, A2h						; Enable 16K VRAM, Screen, NMI interrupt, and 16x16 sprites
+	ld		b, 0A2h						; Enable 16K VRAM, Screen, NMI interrupt, and 16x16 sprites
 	ld		c, 1
 	call	writeVDPReg
 
@@ -35,7 +35,7 @@ setMode2:
 	
 ; Turn on screen
 turnOnScreen:
-	ld		b, E2h		; Enable 16K VRAM, Screen, NMI interrupt, and 16x16 sprites
+	ld		b, 0E2h		; Enable 16K VRAM, Screen, NMI interrupt, and 16x16 sprites
 	ld		c, 1
 	call	writeVDPReg
 
@@ -43,7 +43,7 @@ turnOnScreen:
 	
 ; Turn off screen
 turnOffScreen:
-	ld		b, A2h		; Enable 16K VRAM, NMI interrupt, and 16x16 sprites. Disable Screen
+	ld		b, 0A2h		; Enable 16K VRAM, NMI interrupt, and 16x16 sprites. Disable Screen
 	ld		c, 1
 	call	writeVDPReg
 
@@ -55,7 +55,7 @@ writeVDPReg:
 	ld	a, b				; Write VDP data`
 	out	(VDPBase + 1), a
 
-	ld	a, 80h				; Write VDP register | 0x80
+	ld	a, 80h				; Write VDP register | 80h
 	or	c
 	out	(VDPBase + 1), a
 
@@ -114,13 +114,13 @@ transferVRAMLoop:
 	
 clearTimer:
 	xor		a
-	ld		(NMICount), a
+	ld		(Ram.NMICount), a
 
 	ret
 	
 ; B: Count value to wait for (1/60th of a second)
 waitForTimerOrButtonPress:
-	ld	a, (NMICount)
+	ld	a, (Ram.NMICount)
 	cp	b
 	
 	jr	nz, waitForTimerOrButtonPress
@@ -133,14 +133,14 @@ setInterrupt:
 	im		1
 	
 	ld		bc, 22Fh				; Clear interrupt vector table by filling it with RET instructions.
-	ld		de, FD9Bh
-	ld		hl, FD9Ah
+	ld		de, 0FD9Bh
+	ld		hl, 0FD9Ah
 	
-	ld		(hl), C9h
+	ld		(hl), 0C9h
 	ldir
 	
 	
-	ld		a, C3h					; 'RET' operation code
+	ld		a, 0C3h					; 'RET' operation code
 	ld		(InterruptHook), a		; Set new hook op-code
 	ld		hl, NMIHandler			; Get our interrupt entry point
 	ld		(InterruptHook + 1), hl	; Set new interrupt entry point

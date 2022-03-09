@@ -1,10 +1,16 @@
-%org	ROMStart
+	org	ROMStart
 
-;%def8	2			; 0 =  8 KB from 2000H  1 =  8 KB from 4000H  2 = 16 KB from 2000H
-%def8	0			; 0 =  8 KB from 2000H  1 =  8 KB from 4000H  2 = 16 KB from 2000H
-%def16	start		; Start of code
-%def16	runOnce		; Code ran on initial cartridge load
-%def16	unknown		; Unknown entry
+	ifdef	RAM_8K_2000
+	db	0			; 0 =  8 KB from 2000H  1 =  8 KB from 4000H  2 = 16 KB from 2000H
+	elseif ifdef	RAM_8K_4000
+	db	1
+	else
+	db	2
+	endif
+
+	dw	start		; Start of code
+	dw	runOnce		; Code ran on initial cartridge load
+	dw	unknown		; Unknown entry
 
 runOnce:
 	ret

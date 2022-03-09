@@ -3,7 +3,7 @@ setMode2:
 	ld		c, 0
 	call	writeVDPReg
 
-	ld		b, A2h						; Enable 16K VRAM, Screen, NMI interrupt, and 16x16 sprites
+	ld		b, 0A2h						; Enable 16K VRAM, Screen, NMI interrupt, and 16x16 sprites
 	ld		c, 1
 	call	writeVDPReg
 
@@ -35,7 +35,7 @@ setMode2:
 	
 ; Turn on screen
 turnOnScreen:
-	ld		b, E2h		; Enable 16K VRAM, Screen, NMI interrupt, and 16x16 sprites
+	ld		b, 0E2h		; Enable 16K VRAM, Screen, NMI interrupt, and 16x16 sprites
 	ld		c, 1
 	call	writeVDPReg
 
@@ -43,7 +43,7 @@ turnOnScreen:
 	
 ; Turn off screen
 turnOffScreen:
-	ld		b, A2h		; Enable 16K VRAM, NMI interrupt, and 16x16 sprites. Disable Screen
+	ld		b, 0A2h		; Enable 16K VRAM, NMI interrupt, and 16x16 sprites. Disable Screen
 	ld		c, 1
 	call	writeVDPReg
 
@@ -55,7 +55,7 @@ writeVDPReg:
 	ld	a, b					; Write VDP data
 	out	(VDPBase + 1), a
 
-	ld	a, 80h					; Write VDP register | 0x80
+	ld	a, 80h					; Write VDP register | 80h
 	or	c
 	out	(VDPBase + 1), a
 
@@ -63,7 +63,7 @@ writeVDPReg:
 	
 clearVRAM:
 	ld	hl, 0
-	ld	de, $4000
+	ld	de, 4000h
 
 	ld	a, l
 	out	(VDPBase + 1), a
@@ -116,12 +116,12 @@ transferVRAMLoop:
 	
 clearTimer:
 	xor	a
-	ld	(NMICount), a
+	ld	(Ram.NMICount), a
 
 	ret
 	
 waitForTimerOrButtonPress:
-	ld	a, (NMICount)
+	ld	a, (Ram.NMICount)
 	cp	b
 	
 	jr	nz, waitForTimerOrButtonPress
@@ -145,13 +145,13 @@ resetSound:
 	ld	a, 9Fh			; Set volumes to zero
 	out	(PSGPort), a
 	
-	ld	a, BFh
+	ld	a, 0BFh
 	out	(PSGPort), a
 	
-	ld	a, DFh
+	ld	a, 0DFh
 	out	(PSGPort), a
 	
-	ld	a, FFh
+	ld	a, 0FFh
 	out	(PSGPort), a
 	
 	ret

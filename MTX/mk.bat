@@ -1,4 +1,4 @@
-..\tools\tniASM\tniasm.exe Mtx.s
+..\tools\sjasmplus-1.18.3.win\sjasmplus.exe --lst=Burger.map Mtx.s
 IF ERRORLEVEL 1 goto errorOut
 
 copy /b Loader.bin+Burger.bin BURGER.mtx
@@ -11,8 +11,10 @@ if exist BurgerMTX.wav del BurgerMTX.wav
 
 rename BURGER.wav BurgerMTX.wav
 
-..\tools\tniASM\tniasm.exe Cart.s
+..\tools\sjasmplus-1.18.3.win\sjasmplus.exe --lst=Burger.map Cart.s
 IF ERRORLEVEL 1 goto errorOut
+
+echo Build completed successfully
 
 exit /B 0
 

@@ -1,13 +1,14 @@
-%org	RamStart
-
+	struct	Ram, RAMStart
 SpriteTable:
-	%res8	128
+	ds	128
 
 SpriteOrder:
-	%res8	32
+	ds	32
 
 WorkBuffer:
-	%res8	64
+	ds	64
 
 NMICount:
-	%res8	1
+	ds	1
+
+	ends

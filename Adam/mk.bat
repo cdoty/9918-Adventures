@@ -1,4 +1,4 @@
-..\tools\tniASM\tniasm.exe ddp.s
+..\tools\sjasmplus-1.18.3.win\sjasmplus.exe --lst=Burger.map ddp.s
 IF ERRORLEVEL 1 goto errorOut
 
 tools\ddp Boot.rom Burger.rom Burger.ddp

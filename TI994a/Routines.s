@@ -45,11 +45,11 @@ turnOffScreen:
 
 	b		*r10
 
-; R1: Data << 8 | (Register | 0x80)
+; R1: Data << 8 | (Register | 80h)
 writeVDPReg:
 	movb	r1, @VDPRegister	; Write VDP data`
 	swpb	r1
-	movb	r1, @VDPRegister 	; Write VDP register | 0x80
+	movb	r1, @VDPRegister 	; Write VDP register | 80h
 	
 	movb	@VDPRegister, r0 	; Acknowledge interrupt
 

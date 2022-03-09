@@ -1,17 +1,17 @@
-ROMStart			%equ	2000h
-ROMSize				%equ	(8*1024)
-RAMStart			%equ	7300h
-RAMSize				%equ	D00h
-StackStart			%equ	7FFFh
-VDPBase				%equ	10h
-VDPReadBase			%equ	VDPBase
-Tile1VRAM			%equ	0000h		; Tile VRAM locations
-Tile2VRAM			%equ	0800h
-Tile3VRAM			%equ	1000h
-SpritePattern		%equ	1800h		; Sprite pattern location
-Color1VRAM			%equ	2000h		; Color VRAM locations
-Color2VRAM			%equ	2800h
-Color3VRAM			%equ	3000h
-ScreenVRAM			%equ	3800h		; Screen VRAM location
-SpriteAttributes	%equ	3B00h		; Sprite attributes
-VBIAddress			%equ	7006h		; Z80CTC Channel 3 interrupt routine address
+ROMStart			= 2000h
+ROMSize				= (8*1024)
+RAMStart			= 7300h
+RAMSize				= 0D00h
+StackStart			= 7FFFh
+VDPBase				= 10h
+VDPReadBase			= VDPBase
+Tile1VRAM			= 0000h		; Tile VRAM locations
+Tile2VRAM			= 0800h
+Tile3VRAM			= 1000h
+SpritePattern		= 1800h		; Sprite pattern location
+Color1VRAM			= 2000h		; Color VRAM locations
+Color2VRAM			= 2800h
+Color3VRAM			= 3000h
+ScreenVRAM			= 3800h		; Screen VRAM location
+SpriteAttributes	= 3B00h		; Sprite attributes
+VBIAddress			= 7006h		; Z80CTC Channel 3 interrupt routine address

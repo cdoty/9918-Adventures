@@ -1,24 +1,20 @@
-%include "z80r800.inc"
-%include "z80().inc"
-%include "tniasm.inc"
-%include "CassetteDefines.inc"
+	include	CassetteDefines.inc
 
-%outfile "Header.bin"
+	output	Header.bin
 
-%include "Header.s"
+	include Header.s
 
-%outfile "Cassette.bin"
-%symfile "Burger.map"
+	output	Cassette.bin
 
-DISABLE_INTERRUPTS:	; Disable interrupts during compressed data transfer
+	define	DISABLE_INTERRUPTS	; Disable interrupts during compressed data transfer
 
-%include "RamDefines.inc"
-%include "CassetteStartup.s"
-%include "..\Shared\TitleZ80.s"
-%include "..\Shared\GameZ80.s"
-%include "Routines.s"
-%include "Interrupt.s"
-%include "..\Shared\BitBusterDepackZ80IO.s"
-%include "..\Shared\DataZ80.s"
-RomEnd:
+	include	RamDefines.inc
+	include	CassetteStartup.s
+	include	../Shared/TitleZ80.s
+	include	../Shared/GameZ80.s
+	include	Routines.s
+	include	Interrupt.s
+	include	../Shared/BitBusterDepackZ80IO.s
+	include	../Shared/DataZ80.s
+ROMEnd:
 	

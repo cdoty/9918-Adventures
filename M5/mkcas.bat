@@ -1,4 +1,4 @@
-..\tools\tniASM\tniasm.exe Cassette.s
+..\tools\sjasmplus-1.18.3.win\sjasmplus.exe --lst=Burger.map Cassette.s
 IF ERRORLEVEL 1 goto errorOut
 
 REM ..\Tools\appmake +m5 -b Burger.bin -o Burger.cas --audio --org 8192
@@ -10,7 +10,7 @@ IF ERRORLEVEL 1 goto errorOut
 \mame\castool convert sordm5 Burger.cas BurgerM5.wav
 IF ERRORLEVEL 1 goto errorOut
 
-copy /Y BurgerM5.wav C:\Dropbox\Shared\
+copy /Y BurgerM5.wav E:\Dropbox\Shared\
 IF ERRORLEVEL 1 goto errorOut
 
 echo Build completed successfully

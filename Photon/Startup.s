@@ -8,4 +8,4 @@ gameStart:
 	call	startGame
 
 endlessLoop:
-	jmp	endlessLoop
+	jmp		endlessLoop

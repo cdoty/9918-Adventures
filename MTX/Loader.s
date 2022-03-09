@@ -1,40 +1,40 @@
-BaseMem	%equ	8000h
+BaseMem	= 8000h
 	
-%org	0
+	org	0
 	
-	db	FFh
+	db	0FFh
 	db	"BURGER INVADERS"	; Program name
-	dw	F8F2h
+	dw	0F8F2h
 	
 	ds	16 * 22, 0
 
-	db  00h, F2h, F8h, 02h, 00h, 00h, 00h, 00h
-	db	00h, 00h, 00h, 0Ah, F9h, 02h, 00h, 00h
-	db	00h, 00h, 00h, 00h, 00h, 22h, F9h, 02h
+	db  00h, 0F2h, 0F8h, 02h, 00h, 00h, 00h, 00h
+	db	00h, 00h, 00h, 0Ah, 0F9h, 02h, 00h, 00h
+	db	00h, 00h, 00h, 00h, 00h, 22h, 0F9h, 02h
 	db	00h, 00h, 00h, 00h, 00h, 00h, 00h, 3Ah
-	db	F9h, 02h, 00h, 00h, 00h, 00h, 00h, 00h
+	db	0F9h, 02h, 00h, 00h, 00h, 00h, 00h, 00h
 	
-%org	F8F2h
+	org	0F8F2h
 	
 	db	0					; LSTPG
-	dw	C000h				; VARNAM
-	dw	C001h				; VALBOT
-	dw	C001h				; CALCBOT
-	dw	C001h				; CALCST
-	dw	FB4Bh				; KBDBUF
+	dw	0C000h				; VARNAM
+	dw	0C001h				; VALBOT
+	dw	0C001h				; CALCBOT
+	dw	0C001h				; CALCST
+	dw	0FB4Bh				; KBDBUF
 	db	00h, 00h, 00h, 00h	; USYNT
-	db	00h, C9h, C9h		; USER
+	db	00h, 0C9h, 0C9h		; USER
 	db	00h, 00h, 00h		; $FA8C
 	db	01h					; IOPL
-	db	FFh					; REALBY
+	db	0FFh				; REALBY
 	db	80h					; KBFLAG
-	dw	F8F2h				; STKLIM
-	dw	FB4Bh				; SYSTOP
-	dw	FD48h				; SSTACK
-	db	C9h, 00h, 00h		; USERINT
-	db	C9h, 00h, 00h		; NODLOC
-	db	C9h, 00h, 00h		; FEXPAND
-	db	C9h, 00h, 00h		; USERNOD
+	dw	0F8F2h				; STKLIM
+	dw	0FB4Bh				; SYSTOP
+	dw	0FD48h				; SSTACK
+	db	0C9h, 00h, 00h		; USERINT
+	db	0C9h, 00h, 00h		; NODLOC
+	db	0C9h, 00h, 00h		; FEXPAND
+	db	0C9h, 00h, 00h		; USERNOD
 	dw	EndEntry - BaseMem	; NBTOP
 	db	0					; NBTPG
 	dw	EndEntry - BaseMem	; BASTOP
@@ -52,40 +52,40 @@ BaseMem	%equ	8000h
 	db 	0					; PGN2
 	dw	EndEntry - BaseMem	; PGTOP
 	ds	105, 0
-	dw 	FAD8h				; GOPTR
+	dw 	0FAD8h				; GOPTR
 	dw 	0					; GOSNUM
 	db 	0					; CTYLST
 	dw 	BaseMem				; DATAAD
 	db 	80h					; DATAPG
 	dw 	EndHeader - 1		; DESAVE
 	
-%org	BaseMem
+	org	BaseMem
 	
 StartHeader:
 	dw	EndHeader - StartHeader, 5
-	db	80h, FFh
+	db	80h, 0FFh
 EndHeader:
 
 StartEntry:
 	dw	EndEntry - StartEntry, 10
-	db	C2h
+	db	0C2h
 	dw	EndLoader - StartLoader
 
 StartLoader:
 	ld		a, 0
-	ld		(FD67h), a
+	ld		(0FD67h), a
 	ld		a, 1
-	ld		(FD68h), a
+	ld		(0FD68h), a
 	
 	ld		hl, BaseMem + 100h		; Load the main file
 	ld		de, EndCart - StartCart
-	call	AAEh					
+	call	0AAEh					
 	
 	jp		BaseMem + 100h			; Start the game
 
 EndLoader:
-	db	FFh	; End of Basic marker
+	db	0FFh	; End of Basic marker
 
 EndEntry:
-	db	FFh	; End of Basic variables marker
+	db	0FFh	; End of Basic variables marker
 	

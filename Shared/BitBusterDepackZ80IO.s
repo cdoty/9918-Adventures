@@ -3,15 +3,15 @@
 ; HL = RAM/ROM source ; DE = VRAM destination
 ;-----------------------------------------------------------
 decompressToVRAM:
-%if %def(DISABLE_INTERRUPTS)
+	ifdef DISABLE_INTERRUPTS
 	di
-%endif
+	endif
 
-%if %def(WRITE_OFFSET_2)
-WriteOffset	%equ	2
-%else
-WriteOffset	%equ	1
-%endif
+	ifdef	WRITE_OFFSET_2
+WriteOffset	= 2
+	else
+WriteOffset	= 1
+	endif
 
 ; VRAM address setup
 	in		a, (VDPReadBase + WriteOffset)	; Reset register write mode
@@ -39,13 +39,13 @@ WriteOffset	%equ	1
 ; Main depack loop
 Depack_loop:
 	add		a, a
-	jp		nz, @@nxt0
+	jp		nz, nxt0
 
 	ld		a, (hl)
 	inc		hl
 	rla
 
-@@nxt0:	
+nxt0:	
 	jp		c, Compressed
 
 	ld		c, (VDPBase)
@@ -66,40 +66,40 @@ Match:
 	jr		z, Match1
 
 	add		a, a
-	jp		nz, @@nxt1
+	jp		nz, nxt1
 
 	ld		a, (hl)
 	inc		hl
 	rla
 
-@@nxt1:
+nxt1:
 	rl		b
 	add		a, a
-	jp		nz, @@nxt2
+	jp		nz, nxt2
 
 	ld		a, (hl)
 	inc		hl
 	rla
 
-@@nxt2:	
+nxt2:	
 	rl		b
 	add		a, a
-	jp		nz, @@nxt3
+	jp		nz, nxt3
 
 	ld		a, (hl)
 	inc		hl
 	rla
 
-@@nxt3:	
+nxt3:	
 	rl		b
 	add		a, a
-	jp		nz, @@nxt4
+	jp		nz, nxt4
 
 	ld		a, (hl)
 	inc		hl
 	rla
 
-@@nxt4:
+nxt4:
 	jp		c, Match1
 	
 	res		7, c
@@ -115,13 +115,13 @@ Match1:
 Gamma_size:
 	exx
 	add		a, a
-	jp		nz, @@nxt5
+	jp		nz, nxt5
 
 	ld		a, (hl)
 	inc		hl
 	rla
 
-@@nxt5:	
+nxt5:	
 	exx
 	jp		nc, Gamma_size_end
 
@@ -131,13 +131,13 @@ Gamma_size:
 Gamma_bits:
 	exx
 	add		a, a
-	jp		nz, @@nxt6
+	jp		nz, nxt6
 
 	ld		a, (hl)
 	inc		hl
 	rla
 
-@@nxt6:
+nxt6:
 	exx
 	adc		hl, hl
 
@@ -162,7 +162,7 @@ Gamma_end:
 	pop		bc
 	push	af
 
-@@loop:	
+loop:	
 	ld		a, l
 	out		(VDPBase + WriteOffset), a
 ;	ex		(sp), hl
@@ -197,7 +197,7 @@ Gamma_end:
 	inc		de
 	
 	cpi
-	jp		pe, @@loop
+	jp		pe, loop
 	
 	pop		af
 	pop		hl
@@ -206,8 +206,8 @@ Gamma_end:
 
 ; Depacker exit
 Depack_out:
-%if %def(DISABLE_INTERRUPTS)
+	ifdef	DISABLE_INTERRUPTS
 	ei
-%ENDIF
+	endif
 
 	ret

@@ -3,7 +3,7 @@ setMode2:
 	ld		c, 0
 	call	writeVDPReg
 
-	ld		b, A2h						; Enable 16K VRAM, Screen, NMI interrupt, and 16x16 sprites
+	ld		b, 0A2h						; Enable 16K VRAM, Screen, NMI interrupt, and 16x16 sprites
 	ld		c, 1
 	call	writeVDPReg
 
@@ -35,7 +35,7 @@ setMode2:
 	
 ; Turn on screen
 turnOnScreen:
-	ld		b, E2h		; Enable 16K VRAM, Screen, NMI interrupt, and 16x16 sprites
+	ld		b, 0E2h		; Enable 16K VRAM, Screen, NMI interrupt, and 16x16 sprites
 	ld		c, 1
 	call	writeVDPReg
 
@@ -43,7 +43,7 @@ turnOnScreen:
 	
 ; Turn off screen
 turnOffScreen:
-	ld		b, A2h		; Enable 16K VRAM, NMI interrupt, and 16x16 sprites. Disable Screen
+	ld		b, 0A2h		; Enable 16K VRAM, NMI interrupt, and 16x16 sprites. Disable Screen
 	ld		c, 1
 	call	writeVDPReg
 
@@ -56,7 +56,7 @@ writeVDPReg:
 	out	(VDPBase + 1), a
 	nop
 	
-	ld	a, 80h				; Write VDP register | 0x80
+	ld	a, 80h				; Write VDP register | 80h
 	or	c
 	out	(VDPBase + 1), a
 	nop
@@ -65,7 +65,7 @@ writeVDPReg:
 	
 clearVRAM:
 	ld	hl, 0
-	ld	de, $4000
+	ld	de, 4000h
 
 	ld	a, l
 	out	(VDPBase + 1), a
@@ -119,13 +119,13 @@ transferVRAMLoop:
 	
 clearTimer:
 	xor		a
-	ld		(NMICount), a
+	ld		(Ram.NMICount), a
 
 	ret
 	
 ; B: Count value to wait for (1/60th of a second)
 waitForTimerOrButtonPress:
-	ld	a, (NMICount)
+	ld	a, (Ram.NMICount)
 	cp	b
 	
 	jr	nz, waitForTimerOrButtonPress
@@ -136,16 +136,16 @@ waitForTimerOrButtonPress:
 changeInterrupt:
 	di								; Start of critical region
 
-	ld		de, OldInterrupt		; Get address of old int. hook saved area
+	ld		de, Ram.OldInterrupt	; Get address of old int. hook saved area
 	ld		hl, InterruptHook		; Get address of interrupt entry hook
 	ld		bc, 5					; Length of hook is 5 bytes
 	ldir							; Transfer
 
-	ld		a, C3h					; Set new hook code
+	ld		a, 0C3h					; Set new hook code
 	ld		(InterruptHook), a		; 
 	ld		hl, NMIHandler			; Get our interrupt entry point
 	ld		(InterruptHook + 1), hl	; Set new interrupt entry point
-	ld		a, C9h					; 'RET' operation code
+	ld		a, 0C9h					; 'RET' operation code
 	ld		(InterruptHook + 3), a	; set operation code of 'RET'
 	
 	ei								; End of critical region
@@ -156,7 +156,7 @@ changeInterrupt:
 setInterrupt:
 	di								; Start of critical region
 
-	ld		de, OldInterrupt		; Get address of old int. hook saved area
+	ld		de, Ram.OldInterrupt	; Get address of old int. hook saved area
 	ld		hl, InterruptHook		; Get address of interrupt entry hook
 	ld		bc, 5					; Length of hook is 5 bytes
 	ldir							; Transfer
@@ -164,11 +164,11 @@ setInterrupt:
 	call	getMySlot 				; Get my slot address
 
 	ld		(InterruptHook+1), a	; set slot address
-	ld		a, F7h					; 'RST 30H' inter-slot call operation code
+	ld		a, 0F7h					; 'RST 30H' inter-slot call operation code
 	ld		(InterruptHook), a		; Set new hook op-code
 	ld		hl, NMIHandler			; Get our interrupt entry point
 	ld		(InterruptHook+2), hl	; Set new interrupt entry point
-	ld		a, C9h					; 'RET' operation code
+	ld		a, 0C9h					; 'RET' operation code
 	ld		(InterruptHook + 4), a	; set operation code of 'RET'
 	
 	ei								; End of critical region

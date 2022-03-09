@@ -7,6 +7,8 @@ IF ERRORLEVEL 1 goto errorOut
 copy Burger.bin e:\Mame\Roms\phklad\klad.bin
 IF ERRORLEVEL 1 goto errorOut
 
+echo Build completed successfully
+
 exit /B 0
 
 :errorOut

@@ -1,4 +1,4 @@
-..\tools\tniASM\tniasm.exe Cart.s
+..\tools\sjasmplus-1.18.3.win\sjasmplus.exe --lst=Burger.map Disk.s
 IF ERRORLEVEL 1 goto errorOut
 
 if exist Burger.dsk del Burger.dsk

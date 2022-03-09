@@ -7,7 +7,7 @@ setMode2:
 	ld		c, 0
 	call	writeVDPReg
 
-	ld		b, A2h						; Enable 16K VRAM, NMI interrupt, and 16x16 sprites. Disable Screen
+	ld		b, 0A2h						; Enable 16K VRAM, NMI interrupt, and 16x16 sprites. Disable Screen
 	ld		c, 1
 	call	writeVDPReg
 
@@ -42,7 +42,7 @@ setMode2:
 	
 ; Turn on screen
 turnOnScreen:
-	ld		b, E2h		; Enable 16K VRAM, Screen, NMI interrupt, and 16x16 sprites
+	ld		b, 0E2h		; Enable 16K VRAM, Screen, NMI interrupt, and 16x16 sprites
 	ld		c, 1
 	call	writeVDPReg
 
@@ -50,46 +50,46 @@ turnOnScreen:
 	
 ; Turn off screen
 turnOffScreen:
-	ld		b, A2h		; Enable 16K VRAM, NMI interrupt, and 16x16 sprites. Disable Screen
+	ld		b, 0A2h		; Enable 16K VRAM, NMI interrupt, and 16x16 sprites. Disable Screen
 	ld		c, 1
 	call	writeVDPReg
 
 	ret
 
 writeVDPReg:
-	in	a, (VDPReadBase + 1)	; Reset register write mode
+	in		a, (VDPReadBase + 1)	; Reset register write mode
 	
-	ld	a, b					; Write VDP data
-	out	(VDPBase + 1), a
+	ld		a, b					; Write VDP data
+	out		(VDPBase + 1), a
 
-	ld	a, 80h					; Write VDP register | 0x80
-	or	c
-	out	(VDPBase + 1), a
+	ld		a, 80h					; Write VDP register | 80h
+	or		c
+	out		(VDPBase + 1), a
 
 	ret
 	
 clearVRAM:
-	ld	hl, 0
-	ld	de, $4000
+	ld		hl, 0
+	ld		de, 4000h
 
-	ld	a, l
-	out	(VDPBase + 1), a
+	ld		a, l
+	out		(VDPBase + 1), a
 	
-	ld	a, h
-	or	40h
-	out	(VDPBase + 1), a
+	ld		a, h
+	or		40h
+	out		(VDPBase + 1), a
 	
 clearVRAMLoop:
-	xor	a
-	out	(VDPBase), a
+	xor		a
+	out		(VDPBase), a
 		
-	dec	de
-	ld	a, d
-	or	e
+	dec		de
+	ld		a, d
+	or		e
 	
-	jr	nz, clearVRAMLoop
+	jr		nz, clearVRAMLoop
 	
-	in	a, (VDPReadBase + 1)	; Acknowldge interrupt
+	in		a, (VDPReadBase + 1)	; Acknowldge interrupt
 
 	ret
 	
@@ -97,54 +97,54 @@ clearVRAMLoop:
 ; BC - Destination address
 ; DE - Size
 tranferToVRAM:
-	in	a, (VDPReadBase + 1)	; Reset register write mode
+	in		a, (VDPReadBase + 1)	; Reset register write mode
 
-	ld	a, c
-	out	(VDPBase + 1), a
+	ld		a, c
+	out		(VDPBase + 1), a
 	
-	ld	a, b
-	or	40h
-	out	(VDPBase + 1), a
+	ld		a, b
+	or		40h
+	out		(VDPBase + 1), a
 	
 transferVRAMLoop:
-	ld	a, (hl)
-	out	(VDPBase), a
+	ld		a, (hl)
+	out		(VDPBase), a
 		
-	inc	hl
-	dec	de
+	inc		hl
+	dec		de
 
-	ld	a, d
-	or	e
+	ld		a, d
+	or		e
 	
-	jr	nz, transferVRAMLoop
+	jr		nz, transferVRAMLoop
 	
-	in	a, (VDPReadBase + 1)	; Acknowldge interrupt
+	in		a, (VDPReadBase + 1)	; Acknowldge interrupt
 
 	ret
 	
 clearTimer:
 	xor		a
-	ld		(NMICount), a
+	ld		(Ram.NMICount), a
 
 	ret
 	
 waitForTimerOrButtonPress:
-	ld	a, (NMICount)
-	cp	b
+	ld		a, (Ram.NMICount)
+	cp		b
 	
-	jr	nz, waitForTimerOrButtonPress
+	jr		nz, waitForTimerOrButtonPress
 	
 	ret
 	
 delay:
-	ld	bc, 0
+	ld		bc, 0
 	
 delayLoop:
-	dec	bc
+	dec		bc
 	
-	ld	a, b
-	or	c
+	ld		a, b
+	or		c
 	
-	jr	nz, delayLoop
+	jr		nz, delayLoop
 	
 	ret

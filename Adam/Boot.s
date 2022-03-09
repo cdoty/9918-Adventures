@@ -1,4 +1,4 @@
-%org	0C800h
+	org	0C800h
 
 Boot:
 	di
@@ -20,7 +20,7 @@ RetryRead:
 	push	de
 	push	hl
 
-	call	FCF3h		; Read one block
+	call	0FCF3h		; Read one block
 
 	pop		hl
 	pop		de
@@ -46,4 +46,4 @@ CurrentDevice:
 BlocksToLoad:
 	db	0
 
-%defb	(Boot+BlockSize)-%apos, FFh	; Pad to ROMSize
+	ds	(Boot+BlockSize)-$, 0FFh	; Pad to ROMSize

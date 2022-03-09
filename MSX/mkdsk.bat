@@ -1,4 +1,4 @@
-..\tools\tniASM\tniasm.exe Disk.s
+..\tools\sjasmplus-1.18.3.win\sjasmplus.exe --lst=Burger.map Disk.s
 IF ERRORLEVEL 1 goto errorOut
 
 copy /b DiskHeader.bin+Disk.bin DISK\BURGER.BIN

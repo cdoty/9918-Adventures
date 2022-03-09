@@ -1,1 +1,0 @@
-Place tniasm 1.0, or later, in this directory.

@@ -12,6 +12,8 @@ IF ERRORLEVEL 1 goto errorOut
 Tools\imgtool\imgtool put coco_jvc_rsdos Burger.dsk Burger.bin BURGER.BIN --ftype=binary
 IF ERRORLEVEL 1 goto errorOut
 
+echo Build completed successfully
+
 exit /B 0
 
 :errorOut

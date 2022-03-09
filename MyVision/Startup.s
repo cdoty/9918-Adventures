@@ -1,24 +1,24 @@
-%org	ROMStart
+	org	ROMStart
 
 	di
-	im	1
+	im		1
 	
-	jp	start
+	jp		start
 	
-%defb   0038h-%apos, FFh	; Pad to 0038h
+	ds   	38h-$, 0FFh	; Pad to 38h
 
 IRQ:
-	jp	NMIHandler
+	jp		NMIHandler
 
 start:
-	ld	sp, StackStart	; Set stack pointer
+	ld		sp, StackStart	; Set stack pointer
 
-	ld	hl, RAMStart
-	ld	de, RAMStart + 1
-	ld	bc,	RAMSize
+	ld		hl, RAMStart
+	ld		de, RAMStart + 1
+	ld		bc,	RAMSize
 	
-	xor	a
-	ld	(hl), a
+	xor		a
+	ld		(hl), a
 
 	ldir
 
@@ -31,4 +31,4 @@ start:
 	call	startGame			; Start game
 	
 endlessLoop:
-	jp	endlessLoop
+	jp		endlessLoop

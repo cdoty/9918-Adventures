@@ -18,4 +18,4 @@ start:
 	call	startGame		; Start game
 
 endlessLoop:
-	jp	endlessLoop
+	jp		endlessLoop

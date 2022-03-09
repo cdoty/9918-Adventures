@@ -45,13 +45,13 @@ turnOffScreen:
 
 	b		*r10
 
-; R1: Data << 8 | (Register | 0x80)
+; R1: Data << 8 | (Register | 80h)
 writeVDPReg:
 ;	socb	@VDPAccessValue, @0F070h
 
 	movb	r1, @VDPRegister	; Write VDP data
 	swpb	r1
-	movb	r1, @VDPRegister 	; Write VDP register | 0x80
+	movb	r1, @VDPRegister 	; Write VDP register | 80h
 	
 	movb	@VDPRegister, r0 	; Acknowledge interrupt
 
@@ -60,7 +60,7 @@ writeVDPReg:
 	b		*r11
 
 VDPAccessValue:
-;	dc.w	0x0200
+;	dc.w	0200h
 
 clearVRAM:
 	li		r0, 0			; R0 contains the value written to VRAM

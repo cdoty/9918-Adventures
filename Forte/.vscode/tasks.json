@@ -7,7 +7,7 @@
 			"label": "build",
 			"type": "shell",
 			"command": "mk.bat",
-			"problemMatcher": "$errmatcher-tniasm",
+			"problemMatcher": "$errmatcher-sjasmplus",
 			"group": {
 				"kind": "build",
 				"isDefault": true

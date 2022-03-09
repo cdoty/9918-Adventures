@@ -1,8 +1,6 @@
-%org	RamStart
+	struct	Ram, RAMStart
 
-NMIAddress	%equ	7498h
-INTAddress	%equ	749Bh
-	
 NMICount:
-	%res8	1
-	
+	ds	1
+
+	ends

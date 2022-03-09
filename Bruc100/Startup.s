@@ -1,11 +1,11 @@
-	%org	ROMStart
+	org	ROMStart
 
-	%def16	'AB'
-	%def16	start
-	%def16	0
-	%def16	0
-	%def16	0
-	%defb	6
+	db	'AB'
+	dw	start
+	dw	0
+	dw	0
+	dw	0
+	db	6
 
 start:
 	xor		a
@@ -18,11 +18,12 @@ start:
 	
 	ldir
 
-	call	delay		; Delay before starting
+	call	delay			; Delay before starting
 	
 	call	setMode2		; Set mode 2
 	call	clearVRAM		; Clear VRAM
 	call	setInterrupt	; Set interrupt
+
 	call	showTitle		; Show title
 	call	startGame		; Start game
 	

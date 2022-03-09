@@ -55,7 +55,7 @@ writeVDPReg:
 	ld	a, b				; Write VDP data`
 	out	(VDPBase + 1), a
 
-	ld	a, 80h				; Write VDP register | 0x80
+	ld	a, 80h				; Write VDP register | 80h
 	or	c
 	out	(VDPBase + 1), a
 
@@ -63,7 +63,7 @@ writeVDPReg:
 	
 clearVRAM:
 	ld	hl, 0
-	ld	de, $4000
+	ld	de, 4000h
 
 	ld	a, l
 	out	(VDPBase + 1), a

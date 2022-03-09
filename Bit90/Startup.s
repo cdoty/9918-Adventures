@@ -1,13 +1,17 @@
-%org	ROMStart
+	org	ROMStart
 
-%def16	AA55h		; Boot right to cart
-;%def16	55AAh		; Display logo screen
-%def16	SpriteTable	; Sprite table
-%def16	SpriteOrder	; Sprite order table
-%def16	WorkBuffer	; Work buffer
-%def8	0			; Disable joystick 1 polling
-%def8	0			; Disable joystick 2 polling
-%def16	start		; Start of code
+	ifdef	DISPLAY_COLECO_LOGO
+	dw	55AAh			; Display logo screen
+	else	
+	dw	0AA55h			; Boot right to cart
+	endif
+
+	dw	Ram.SpriteTable	; Sprite table
+	dw	Ram.SpriteOrder	; Sprite order table
+	dw	Ram.WorkBuffer	; Work buffer
+	db	0				; Disable joystick 1 polling
+	db	0				; Disable joystick 2 polling
+	dw	start			; Start of code
 
 RST8H:
 	reti
@@ -40,12 +44,14 @@ IRQ:
 NMI:
 	jp	NMIHandler
 	
-%def8	"BURGER INVADERS/PRESENTS/2020"	; Cartridge title
+	db	"BURGER INVADERS/PRESENTS/2020"	; Cartridge title
 
 start:
 	call	1FD6h		; Disable sound
+	
 	call	setMode2	; Set mode 2
 	call	clearVRAM	; Clear VRAM
+	
 	call	showTitle	; Show title
 	call	startGame	; Start game
 	
