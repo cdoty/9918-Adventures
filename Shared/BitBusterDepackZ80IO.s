@@ -3,14 +3,14 @@
 ; HL = RAM/ROM source ; DE = VRAM destination
 ;-----------------------------------------------------------
 decompressToVRAM:
-	ifdef DISABLE_INTERRUPTS
-	di
-	endif
-
 	ifdef	WRITE_OFFSET_2
 WriteOffset	= 2
 	else
 WriteOffset	= 1
+	endif
+
+	ifdef DISABLE_INTERRUPTS
+	di
 	endif
 
 ; VRAM address setup

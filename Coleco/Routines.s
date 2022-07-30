@@ -54,7 +54,7 @@ turnOffScreen:
 writeVDPReg:
 	in	a, (VDPReadBase + 1)	; Reset register write mode
 	
-	ld	a, b					; Write VDP data`
+	ld	a, b					; Write VDP data
 	out	(VDPBase + 1), a
 
 	ld	a, 80h					; Write VDP register | 80h
