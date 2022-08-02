@@ -1,9 +1,6 @@
 DefaultHandler:
 	reti
 	
-IRQHandler:
-	reti
-	
 NMIHandler:
 	ld	a, (NMICount)
 	inc	a
