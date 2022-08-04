@@ -9,7 +9,7 @@ WriteOffset	= 2
 WriteOffset	= 1
 	endif
 
-	ifdef DISABLE_INTERRUPTS
+	ifdef	DISABLE_INTERRUPTS
 	di
 	endif
 
