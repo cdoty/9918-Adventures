@@ -1,5 +1,14 @@
-ROMStart	%equ	C000h	; 8000h on a SV-328
-RAMStart	%equ	F400h	
-StackStart	%equ	F500h	; Seems to be the bottom of memory
-VDPBase		%equ	80h
-VDPReadBase	%equ	84h
+ROMStart			= 0C000h	; 8000h on a SV-328
+RAMStart			= 0F400h	
+StackStart			= 0F500h	; Seems to be the bottom of memory
+VDPBase				= 80h
+VDPReadBase			= 84h
+Tile1VRAM			= 0000h		; Tile VRAM locations
+Tile2VRAM			= 0800h
+Tile3VRAM			= 1000h
+SpritePattern		= 1800h		; Sprite pattern location
+Color1VRAM			= 2000h		; Color VRAM locations
+Color2VRAM			= 2800h
+Color3VRAM			= 3000h
+ScreenVRAM			= 3800h		; Screen VRAM location
+SpriteAttributes	= 3B00h		; Sprite attributes

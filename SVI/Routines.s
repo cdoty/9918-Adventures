@@ -3,7 +3,7 @@ setMode2:
 	ld		c, 0
 	call	writeVDPReg
 
-	ld		b, A2h						; Enable 16K VRAM, Screen, NMI interrupt, and 16x16 sprites
+	ld		b, 0A2h						; Enable 16K VRAM, Screen, NMI interrupt, and 16x16 sprites
 	ld		c, 1
 	call	writeVDPReg
 
@@ -35,7 +35,7 @@ setMode2:
 	
 ; Turn on screen
 turnOnScreen:
-	ld		b, E2h		; Enable 16K VRAM, Screen, NMI interrupt, and 16x16 sprites
+	ld		b, 0E2h		; Enable 16K VRAM, Screen, NMI interrupt, and 16x16 sprites
 	ld		c, 1
 	call	writeVDPReg
 
@@ -43,7 +43,7 @@ turnOnScreen:
 	
 ; Turn off screen
 turnOffScreen:
-	ld		b, A2h		; Enable 16K VRAM, NMI interrupt, and 16x16 sprites. Disable Screen
+	ld		b, 0A2h		; Enable 16K VRAM, NMI interrupt, and 16x16 sprites. Disable Screen
 	ld		c, 1
 	call	writeVDPReg
 
@@ -115,20 +115,20 @@ transferVRAMLoop:
 ; Sets interrupt, in cassette mode
 setInterrupt:
 	ld	hl, NMIHandler
-	ld	(FE7Ah), hl
+	ld	(0FE7Ah), hl
 	ld	a, 195
-	ld	(FE79h), a
+	ld	(0FE79h), a
 
 	ret
 
 clearTimer:
 	xor		a
-	ld		(NMICount), a
+	ld		(Ram.NMICount), a
 
 	ret
 	
 waitForTimerOrButtonPress:
-	ld	a, (NMICount)
+	ld	a, (Ram.NMICount)
 	cp	b
 	
 	jr	nz, waitForTimerOrButtonPress
@@ -147,12 +147,3 @@ delayLoop:
 	jr	nz, delayLoop
 	
 	ret
-	
-seedRandomNumber:
-	; TODO add reading of H and V raster position and transfer to 73c8/9
-	
-	ret
-
-getRandomNumber:
-	ret
-	

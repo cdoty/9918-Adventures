@@ -1,11 +1,11 @@
-%org	ROMStart
+	org	ROMStart
 
 start:
 	di	
 
-	im	1
+	im		1
 
-	ld	sp, StackStart	; Set stack pointer
+	ld		sp, StackStart	; Set stack pointer
 
 	call	setMode2		; Set mode 2
 	call	clearVRAM		; Clear VRAM

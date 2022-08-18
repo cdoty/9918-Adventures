@@ -1,4 +1,4 @@
-%org	ROMStart
+	org	ROMStart
 
 	di	
 
@@ -6,42 +6,42 @@
 
 	jr	start
 	
-%defb   0008h-%apos	; Pad to 0008h
+	block	0008h-$	; Pad to 0008h
 
 RST8H:
-   jp	DefaultHandler
+	jp	DefaultHandler
 
-%defb   0010h-%apos	; Pad to 0010h
+	block  10h-$	; Pad to 0010h
 
 RST10H:
-   jp	DefaultHandler
+	jp	DefaultHandler
 
-%defb   0018h-%apos	; Pad to 0018h
+	block	18h-$	; Pad to 0018h
 
 RST18H:
-   jp	DefaultHandler
+	jp	DefaultHandler
 
-%defb   0020h-%apos	; Pad to 0020h
+	block	20h-$	; Pad to 0020h
 
 RST20H:
-   jp	DefaultHandler
+   	jp	DefaultHandler
 
-%defb   0028h-%apos	; Pad to 0028h
+	block	28h-$	; Pad to 0028h
 
 RST28H:
-   jp	DefaultHandler
+	jp	DefaultHandler
 
-%defb   0030h-%apos	; Pad to 0030h
+	block	30h-$	; Pad to 0030h
 
 RST30H:
-   jp	DefaultHandler
+	jp	DefaultHandler
 
-%defb   0038h-%apos	; Pad to 0038h
+	block	38h-$	; Pad to 0038h
 
 NMI:
 	jp	NMIHandler
 
-%defb   0040h-%apos	; Pad to 0040h
+	block	40h-$	; Pad to 0040h
 
 start:
 	xor		a			; Clear RAM
