@@ -12,7 +12,9 @@
 				"hobby",
 				"-cass",
 				"${workspaceFolder}\\BurgerPK8000.wav",
-				"-debug"
+				"-debug",
+				"-autoboot_command",
+				"bload \"BURGER\",R\\n"
 			],
 			"program": "e:/mame/mame.exe",
 			"cwd": "e:/mame"

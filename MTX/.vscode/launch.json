@@ -12,7 +12,11 @@
 				"mtx500",
 				"-cass",
 				"${workspaceFolder}\\BurgerMTX.wav",
-				"-debug"
+				"-debug",
+				"-autoboot_delay",
+				"1",
+				"-autoboot_command",
+				"LOAD \"\"\\n"
 			],
 			"program": "e:/mame/mame.exe",
 			"cwd": "e:/mame"

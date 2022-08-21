@@ -14,7 +14,11 @@
 				"sprite",
 				"-flop1",
 				"${workspaceFolder}\\Burger.ssd",
-				"-debug"
+				"-debug",
+				"-autoboot_delay",
+				"3",
+				"-autoboot_command",
+				"*burger\\n"
 			],
 			"program": "e:/mame/mame.exe",
 			"cwd": "e:/mame"
