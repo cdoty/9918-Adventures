@@ -2,7 +2,7 @@
 * The graphics hardware is nearly a clone of the TMS-9938/58.  
 * The PK8002 supports a keyboard and two joysticks with two buttons each.  
 * The cassette image must be encoded to autostart after load.  
-&emsp;&ensp;This is a simple look up table replacement for every byte in the cassette file, except for the load start, load end, and program start address.  
+This is a simple look up table replacement for every byte in the cassette file, except for the load start, load end, and program start address.  
 * [Emu](http://bashkiria-2m.narod.ru/index/emul/0-8) was used for testing the program. The MAME driver isn't complete for the PK8002.  
 
 # Memory locations
@@ -27,7 +27,7 @@ Video mode ($84)	Sets various settings for the video hardware.
 Bit 0 ($01)	Enables or disables sprites.
 Bit 2 ($04)	Enables 60 hz mode. If set the system runs at 60 hz, and 50 hz if cleared.  
 Bit 3 ($08)	Enables graphics mode. If set, the pattern memory is configured like mode 2 on the TMS9918a. If cleared, it is configured like mode 1.  
-&emsp;&ensp;Mode 2 divides the screen into 3 parts and uses a pattern and color buffer for each part. Mode one shares a pattern and color buffer for the entire screen.  
+Mode 2 divides the screen into 3 parts and uses a pattern and color buffer for each part. Mode one shares a pattern and color buffer for the entire screen.  
 Bit 4 ($10) Controls how the color table location is set. If the bit is set, port $92 controls the location. If cleared, it comes after the name table.  
 Bit 5 ($20) Controls the color mode. If the bit is cleared, it operates like the TMS9918a. If set, 2/4 colors per pixelare used.  
 Bit 6 and 7 ($C0) Sets upper two bits of the 16 bit VRAM address, in RAM.  
@@ -36,8 +36,8 @@ Video enable ($86)	Customization settings for more of the video.
 Bit 0 ($01) Printer ready (?)  
 Bit 1 ($02) Signal printer (?)  
 Bit 3 ($08) Sets the display width to 256 or 512.  
-&emsp;&ensp;If the bit is cleared, the screen is 256 pixels wide, and 4 colors per pixel can be used.  
-&emsp;&ensp;If the bit is set, the screen is 512 pixels wide, and 2 colors per pixel can be used.  
+If the bit is cleared, the screen is 256 pixels wide, and 4 colors per pixel can be used.  
+If the bit is set, the screen is 512 pixels wide, and 2 colors per pixel can be used.  
 Bit 4 ($10) Enable screen. If the bit is set, the screen is enabled.  
 Bit 5 ($20) Indicates RUS(?)  
 Bit 6 ($40) Set the screen height. If the bit is cleared, the screen is 192 pixels tall. If the bit is set, the screen is 212 pixels tall.  
