@@ -1,4 +1,4 @@
-	output	Burger.bin
+	output	Cassette.bin
 
 	include	CassetteDefines.inc
 	include	RamDefines.inc

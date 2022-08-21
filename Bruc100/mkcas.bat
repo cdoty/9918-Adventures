@@ -1,4 +1,4 @@
-..\tools\sjasmplus-1.18.3.win\sjasmplus.exe --lst=Burger.map Cassette.s
+..\tools\sjasmplus-1.18.3.win\sjasmplus.exe --lst=Cassette.map Cassette.s
 IF ERRORLEVEL 1 goto errorOut
 
 copy /b Header.bin+Cassette.bin BURGER.bin
