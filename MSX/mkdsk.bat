@@ -4,6 +4,7 @@ IF ERRORLEVEL 1 goto errorOut
 copy /b DiskHeader.bin+Disk.bin DISK\BURGER.BIN
 IF ERRORLEVEL 1 goto errorOut
 
+tools\msxtar -cvf Burger.dsk --size=single Disk/AUTOEXEC.BAS Disk/BURGER.BAS Disk/BURGER.BIN
 IF ERRORLEVEL 1 goto errorOut
 
 ..\Tools\PadFile 255 368640 Burger.dsk

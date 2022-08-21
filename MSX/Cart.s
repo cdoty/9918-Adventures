@@ -1,6 +1,8 @@
 	output	Burger.rom
 	size	ROMSize
 
+	define	DISABLE_INTERRUPTS	; Disable interrupts during compressed data transfer
+
 	include	Defines.inc
 	include	RamDefines.inc
 	include	Startup.s
