@@ -7,6 +7,8 @@
 	dw	ROMEnd
 	dw	start
 
+	defc	SwitchBank1Rom = 1
+	
 	include "Startup.s"
 	include "Interrupt.s"
 	include "Routines.s"

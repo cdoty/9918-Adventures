@@ -4,6 +4,8 @@
 	
 	include "Header.s"
 
+	defc	SwitchBank1Rom = 1
+	
 StartRelocate:	
 	rorg	$4000
 

@@ -6,8 +6,8 @@
 Ram/Rom swap ($80): Four 16k banks can be swapped in and out. Only affects read, writes always go to ram.  
 There are two bits for each bank:  
 00 Enables rom in that bank.  
-01 Not used (?)  
-10 Not used (?)  
+01 External 1 (?)  
+10 External 2 (?)  
 11 Enables ram.
 
 For debugging, ram can be enabled to see VRAM, in bank 0. (Set it to 0xFF)  

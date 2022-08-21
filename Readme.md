@@ -19,7 +19,8 @@
 * **Spectravideo** 318 and **328** computers.
 * **Texas Instruments TI-99/4a computer**.
 * **Tomy Tutor and Pyūta (ぴゅう太) computers.**  
-* PK8000 computer and Photon arcade system.
+* PK8000 computer and Photon arcade system.  
+* PK8002 computer.  
 * Dragon 32/64 and Tandy Color Computer with Premier Microsystems Sprites, WordPak 2+, or Super Sprite FM+ addons.  
 * Potten's Poker arcade/gambling machine  
 

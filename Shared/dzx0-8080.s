@@ -6,13 +6,18 @@
 ;   HL: source address (compressed data)
 ;   BC: destination address (decompressing)
 ; -----------------------------------------------------------------------------
-
 decompressZX0:
 	di
 
+	ifdef SwitchBank1Rom
 	call	disableBank1Rom
+	endif
+
 	call	dzx0_standard
+
+	ifdef SwitchBank1Rom
 	call	enableBank1Rom
+	endif
 
 	ei
 	

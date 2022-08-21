@@ -41,6 +41,7 @@ clearVRAM:
 	lxi		b, $4000
 
 	mvi		d, 0
+
 clearLoop:
 	mov		m, d
 	inx		h
