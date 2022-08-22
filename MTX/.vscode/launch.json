@@ -3,12 +3,14 @@
 	// Hover to view descriptions of existing attributes.
 	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
 	"version": "0.2.0",
-	"configurations": [
+	"configurations":
+	[
 		{
-			"name": "Run Project",
+			"name": "Debug MTX",
 			"type": "cppvsdbg",
 			"request": "launch",
-			"args" : [
+			"args":
+			[
 				"mtx500",
 				"-cass",
 				"${workspaceFolder}\\BurgerMTX.wav",
@@ -17,6 +19,19 @@
 				"1",
 				"-autoboot_command",
 				"LOAD \"\"\\n"
+			],
+			"program": "e:/mame/mame.exe",
+			"cwd": "e:/mame"
+		},
+		{
+			"name": "Debug Cartridge",
+			"type": "cppvsdbg",
+			"request": "launch",
+			"args":
+			[
+				"mtx500",
+				"-cart",
+				"${workspaceFolder}\\BurgerMTX.wav",
 			],
 			"program": "e:/mame/mame.exe",
 			"cwd": "e:/mame"
