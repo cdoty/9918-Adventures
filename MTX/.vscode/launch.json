@@ -32,6 +32,10 @@
 				"mtx500",
 				"-cart",
 				"${workspaceFolder}\\BurgerMTX.wav",
+				"-autoboot_delay",
+				"1",
+				"-autoboot_command",
+				"LOAD \"\"\\n"
 			],
 			"program": "e:/mame/mame.exe",
 			"cwd": "e:/mame"
