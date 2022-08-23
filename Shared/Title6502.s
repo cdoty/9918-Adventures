@@ -92,18 +92,20 @@ showTitle:
 	
 	jsr		decompressToVRAM
 
-	jsr		turnOnScreen	; Turn on screen
-
+	; Turn on screen
+	jsr		turnOnScreen
+	
 	; Clear timer
-	jsr		clearTimer
-
+	jsr		clearTimer					
+		
 	; Wait for timer
-	lda		#ScreenDelay
+	lda		#ScreenDelay				
 	sta		ZPStart
 	
-	jsr		waitForTimerOrButtonPress
+	jsr		waitForTimerOrButtonPress	
 	
-	jsr		turnOffScreen	; Turn off screen
+	; Turn off screen
+	jsr		turnOffScreen				
 
 	; Transfer second screen	
 	lda		#<Title2
@@ -118,7 +120,8 @@ showTitle:
 	
 	jsr		decompressToVRAM
 
-	jsr		turnOnScreen	; Turn on screen
+	; Turn on screen
+	jsr		turnOnScreen	
 
 	; Clear timer
 	jsr		clearTimer
@@ -129,7 +132,8 @@ showTitle:
 	
 	jsr		waitForTimerOrButtonPress
 	
-	jsr		turnOffScreen	; Turn off screen
+	; Turn off screen
+	jsr		turnOffScreen	
 
 	; Transfer third screen	
 	lda		#<Title3
@@ -144,7 +148,8 @@ showTitle:
 	
 	jsr		decompressToVRAM
 
-	jsr		turnOnScreen	; Turn on screen
+	; Turn on screen
+	jsr		turnOnScreen	
 
 	; Clear timer
 	jsr		clearTimer

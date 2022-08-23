@@ -92,7 +92,7 @@ clearVRAMLoop:
 ; HL - Source address
 ; BC - Destination address
 ; DE - Size
-tranferToVRAM:
+transferToVRAM:
 	in	a, (VDPReadBase + 1)	; Reset register write mode
 
 	ld	a, c

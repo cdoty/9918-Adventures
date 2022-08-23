@@ -1,7 +1,8 @@
-VDPRead				equ $C000 + $2000
-VDPStatus			equ $C000 + $2001
-VDPWrite			equ $C000 + $2000
-VDPRegister			equ $C000 + $2001
+VDPBase				equ	$C000 + $2000
+VDPRead				equ VDPBase
+VDPStatus			equ VDPBase + 1
+VDPWrite			equ VDPBase
+VDPRegister			equ VDPBase + 1
 Tile1VRAM			equ	$0000		; Tile VRAM locations
 Tile2VRAM			equ	$0800
 Tile3VRAM			equ	$1000

@@ -36,12 +36,13 @@ showTitle:
 	ld		de, ScreenVRAM
 	call	decompressToVRAM
 
-	; Wait for timer
+	; Clear timer
 	call	clearTimer
 
 	; Turn on screen
 	call	turnOnScreen
 
+	; Wait for timer or button press
 	ld		a, ScreenDelay
 	ld		b, a
 	call	waitForTimerOrButtonPress
@@ -54,12 +55,13 @@ showTitle:
 	ld		de, 3800h
 	call	decompressToVRAM
 
-	; Wait for timer
+	; Clear timer
 	call	clearTimer
 
 	; Turn on screen
 	call	turnOnScreen
 
+	; Wait for timer
 	ld		a, ScreenDelay
 	ld		b, a
 	call	waitForTimerOrButtonPress
@@ -75,9 +77,10 @@ showTitle:
 	; Turn on screen
 	call	turnOnScreen
 
-	; Wait for timer
+	; Clear timer
 	call	clearTimer
 
+	; Wait for timer
 	ld		a, ScreenDelay
 	ld		b, a
 	call	waitForTimerOrButtonPress
