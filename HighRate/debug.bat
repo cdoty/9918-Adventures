@@ -1,6 +1,6 @@
 set WORKING_DIRECTORY=%cd%
 
-cd \mame
-mame hrhmbrew -debug
+cd mame
+highrate hrhmbrew -debug
 
 cd %WORKING_DIRECTORY%
