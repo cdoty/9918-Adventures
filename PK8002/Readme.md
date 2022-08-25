@@ -1,6 +1,8 @@
 # PK8002
 * The graphics hardware is nearly a clone of the TMS-9938/58.  
+
 * The PK8002 supports a keyboard and two joysticks with two buttons each.  
+
 * The cassette image must be encoded to autostart after load.  
 This is a simple look up table replacement for every byte in the cassette file, except for the load start, load end, and program start address.  
 * [Emu](http://bashkiria-2m.narod.ru/index/emul/0-8) was used for testing the program. The MAME driver isn't complete for the PK8002.  
