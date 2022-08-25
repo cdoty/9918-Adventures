@@ -127,7 +127,7 @@ waitForTimerOrButtonPress:
 	ret
 	
 delay:
-	ld		bc, 0
+	ld		bc, 0FFFFh
 	
 delayLoop:
 	dec		bc
