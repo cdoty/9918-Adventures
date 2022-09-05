@@ -184,7 +184,7 @@ loop:
 
 	ld		a, d
 	or		40h
-	out		(VDPBase + 1), a
+	out		(VDPBase + WriteOffset), a
 ;	ex		(sp), hl
 ;	ex		(sp), hl
 
