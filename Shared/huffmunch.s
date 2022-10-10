@@ -6,8 +6,10 @@
 	hm_stream 	= <(HFMStart + 2)	; pointer to bitstream
 	hm_tree   	= <(HFMStart + 4)	; pointer to tree base
 	hm_byte   	= <(HFMStart + 6)	; current byte of bitstream
+	hm_temp		= hm_byte			; temp location
 	hm_status 	= <(HFMStart + 7)	; bits 0-2 = bits left in hm_byte, bit 7 = string with suffix
 	hm_length	= <(HFMStart + 8)	; bytes left in current string
+	node1 		= leaf1
 
 ; NOTE: only hm_node and hm_stream need to be on ZP
 ;       the rest could go elsewhere, but still recommended for ZP
@@ -15,7 +17,6 @@
 huffmunch_load:
 	; hm_node = header
 	; Y:X = index
-	hm_temp	= hm_byte	; temporary 16-bit value in hm_status:hm_byte
 	
 	; 1. hm_stream = (index * 2)
 	sty	hm_stream + 1
@@ -198,8 +199,6 @@ node0:
 	; Y = 1
 	jmp leaf0
 	
-	node1 = leaf1
-
 node2:
 	; Y = 1
 	lda hm_status

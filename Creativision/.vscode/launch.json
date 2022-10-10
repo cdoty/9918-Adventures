@@ -11,7 +11,7 @@
 			"request": "launch",
 			"args":
 			[
-				"lasr2001",
+				"crvision",
 				"-cart",
 				"${workspaceFolder}\\Burger.bin",
 				"-debug"

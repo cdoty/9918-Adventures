@@ -42,9 +42,6 @@ int main(int argc, char* argv[])
 	}
 
 	pFile->close();
-	pFile.reset();
-
-	pFile	= File::create();
 
 	if (false == pFile->create(argv[1], true))
 	{
