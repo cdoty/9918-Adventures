@@ -1,0 +1,15 @@
+ROMStart			= 8241h
+RAMStart			= 0F000h
+RAMSize				= 0C00h
+VDPBase				= 30h
+VDPReadBase			= VDPBase
+Tile1VRAM			= 0000h		; Tile VRAM locations
+Tile2VRAM			= 0800h
+Tile3VRAM			= 1000h
+SpritePattern		= 1800h		; Sprite pattern location
+Color1VRAM			= 2000h		; Color VRAM locations
+Color2VRAM			= 2800h
+Color3VRAM			= 3000h
+ScreenVRAM			= 3800h		; Screen VRAM location
+SpriteAttributes	= 3B00h		; Sprite attributes
+NMIAddress			= 8061h		; NMI address

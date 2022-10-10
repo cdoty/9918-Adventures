@@ -6,7 +6,7 @@
 	[
 		{
 			"label": "build",
-			"type": "shell",
+			"type": "process",
 			"command": "mk.bat",
 			"problemMatcher": "$errmatcher-sjasmplus",
 			"group":
@@ -17,7 +17,7 @@
 		},
 		{
 			"label": "Build Cassette",
-			"type": "shell",
+			"type": "process",
 			"command": "mkcas.bat",
 			"problemMatcher": "$errmatcher-sjasmplus",
 			"group":
