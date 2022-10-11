@@ -159,6 +159,13 @@ decompressToVRAM:
 	jsr	huffmunch_load
 		
 	stx	ZPStart + 4		; Store the uncompressed size as the count
+
+	cpy	#0
+	bne	noUpdate
+
+	iny					; Account for high byte bne branch
+	
+noUpdate:
 	sty	ZPStart + 5
 
 	lda	VDPStatus

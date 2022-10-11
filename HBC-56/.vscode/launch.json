@@ -14,7 +14,7 @@
 				"--resizable",
 				"--renderer",
 				"software",
-				"--brk",
+//				"--brk",
 				"--rom",
 				"${workspaceFolder}\\Burger.o"
 			],
