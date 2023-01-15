@@ -1,0 +1,17 @@
+ROMStart			= 140Dh
+ROMSize				= (8*1024)
+RAMStart			= 8000h
+StackPointer		= 0FEE0h	; Stack pointer
+Control				= 0			; Control register
+AY8910				= 40h		; AY 8910 control register
+VDPBase				= 0A0h
+VDPReadBase			= VDPBase
+Tile1VRAM			= 0000h		; Tile VRAM locations
+Tile2VRAM			= 0800h
+Tile3VRAM			= 1000h
+SpritePattern		= 1800h		; Sprite pattern location
+Color1VRAM			= 2000h		; Color VRAM locations
+Color2VRAM			= 2800h
+Color3VRAM			= 3000h
+ScreenVRAM			= 3800h		; Screen VRAM location
+SpriteAttributes	= 3B00h		; Sprite attributes
