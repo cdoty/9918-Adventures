@@ -23,6 +23,7 @@
 * PK8002 computer.  
 * Dragon 32/64 and Tandy Color Computer with Premier Microsystems Sprites, WordPak 2+, or Super Sprite FM+ addons.  
 * Potten's Poker arcade/gambling machine  
+* NABU PC using the NABU internet adapter  
 
 &emsp;&ensp;&nbsp;**Systems with a bold name were tested using actual hardware with a cartridge, disk, and/or cassette.**
 
