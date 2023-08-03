@@ -1,9 +1,11 @@
 	ORG		ROMStart
 
 	ifdef	DISPLAY_COLECO_LOGO
-	dw	55AAh			; Display logo screen
+	db	0AAh			; Display logo screen
+	db	55h			
 	else	
-	dw	0AA55h			; Boot right to cart
+	db	55h				; Display logo screen
+	db	0AAh			
 	endif
 	dw	Ram.SpriteTable	; Sprite table
 	dw	Ram.SpriteOrder	; Sprite order table
@@ -46,7 +48,10 @@ NMI:
 	db	"BURGER INVADERS/PRESENTS/2020"	; Cartridge title
 
 start:
+	ifndef	DISPLAY_COLECO_LOGO
 	call	1FD6h		; Disable sound
+	endif
+
 	call	setMode2	; Set mode 2
 	call	clearVRAM	; Clear VRAM
 

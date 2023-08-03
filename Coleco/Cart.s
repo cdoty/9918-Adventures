@@ -1,7 +1,8 @@
 	output	Burger.bin
 	size	ROMSize
 
-;	define	DISPLAY_COLECO_LOGO
+	define	DISPLAY_COLECO_LOGO
+;	define	DISABLE_INTERRUPTS
 
 	include Defines.inc
 	include RamDefines.inc
