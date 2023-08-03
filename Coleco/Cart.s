@@ -2,7 +2,7 @@
 	size	ROMSize
 
 	define	DISPLAY_COLECO_LOGO
-;	define	DISABLE_INTERRUPTS
+	define	DISABLE_INTERRUPTS
 
 	include Defines.inc
 	include RamDefines.inc

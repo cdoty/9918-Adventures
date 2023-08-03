@@ -1,8 +1,8 @@
 	output 	Burger.bin
 	size	ROMSize
 
-;	define	DISPLAY_BIT90_LOGO
-;	define	DISABLE_INTERRUPTS
+	define	DISPLAY_BIT90_LOGO
+	define	DISABLE_INTERRUPTS
 
 	include	Defines.inc
 	include	RamDefines.inc
