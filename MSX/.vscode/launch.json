@@ -11,7 +11,7 @@
 			"request": "launch",
 			"args":
 			[
-				"cx5m",
+				"cx5mu",
 				"-cartridge1",
 				"${workspaceFolder}\\Burger.rom",
 				"-debug"
@@ -25,7 +25,7 @@
 			"request": "launch",
 			"args":
 			[
-				"cx5m",
+				"cx5mu",
 				"-cass",
 				"${workspaceFolder}\\BurgerMSX.wav",
 				"-debug",

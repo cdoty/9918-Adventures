@@ -32,7 +32,7 @@
 				"-autoboot_delay",
 				"5",
 				"-autoboot_command",
-				"BLOAD  \"CAS:\" ,R\\n"
+				"BLOAD  \"CAS:\"  ,R\\n"
 			],
 			"program": "e:/mame/mame.exe",
 			"cwd": "e:/mame"
