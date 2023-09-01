@@ -2,7 +2,7 @@
 * **Apple II** with E-Z Color Graphics Interface, Super Sprite, Third Millenium Arcade, or **AppleTi** boards.
 * BBC with Logotron Sprite Board.
 * **BBC Bridge Companion** with modifications to enable full 16k VRAM access.
-* Bit90 computer.
+* **Bit90 computer.
 * Frael Bruc 100 computer.
 * **Colecovision and Coleco Adam** using a cartridge or Adam Digital Data Pack.
 * **VTech Creativision computers**, including **Dick Smith Wizzard**, Salora Manager, and VTech Laser 2001.

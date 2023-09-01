@@ -4,7 +4,7 @@
 	db	0AAh			; Display logo screen
 	db	55h			
 	else	
-	db	55h				; Display logo screen
+	db	55h				; Don't display logo screen
 	db	0AAh			
 	endif
 

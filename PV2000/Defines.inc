@@ -14,4 +14,3 @@ Color3VRAM			= 3000h
 ScreenVRAM			= 3800h		; Screen VRAM location
 SpriteAttributes	= 3B00h		; Sprite attributes
 NMIAddress			= 7498h		; NMI address
-INTAddress			= 749Bh		; INT address

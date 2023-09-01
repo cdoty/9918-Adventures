@@ -1,11 +1,11 @@
 	org	ROMStart
 
-	db	'AB'
-	dw	start
-	dw	0
-	dw	0
-	dw	0
-	db	6
+	db	'AB'	; Cartridge header
+	dw	start	; Init routine
+	dw	0		; Do not add instructions to basic
+	dw	0		; Device number
+	dw	0		; Do not provide a tokenize basic program
+	ds	6		; Reserved block
 
 start:
 	xor		a

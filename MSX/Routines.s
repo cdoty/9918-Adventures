@@ -161,7 +161,7 @@ setInterrupt:
 	ld		bc, 5					; Length of hook is 5 bytes
 	ldir							; Transfer
 
-	call	getMySlot 				; Get my slot address
+	call	getCurrentSlot			; Get my slot address
 
 	ld		(InterruptHook+1), a	; set slot address
 	ld		a, 0F7h					; 'RST 30H' inter-slot call operation code
@@ -175,19 +175,23 @@ setInterrupt:
 	
 	ret
 
-getMySlot:
+; Gets the current slot and enables the 2nd handle of a 32k ROM.
+getCurrentSlot:
 	push	bc
 	push	hl
 	
-	in		a, (PrimarySlotReg)		; Read primary slot register
+	call	ReadSlotReg				; Read slot register
+
 	rrca							; Move it to bit 0,1 of A
 	rrca
-	and		00000011b				; Get bit 1,0
+	and		03h						; Get bit 1,0
 	ld		c, a					; Set primary slot No.
 	ld		b, 0
 	ld		hl,	ExpansionTable		; See if the slot is expanded or not
 	add		hl, bc
-	or		(hl)					; Set MSB if so
+	ld		a, (hl)					; Set MSB if so
+	and		80h
+	or		c
 	ld		c, a
 	inc		hl						; Point to SLTTBL entry
 	inc		hl
@@ -195,9 +199,16 @@ getMySlot:
 	inc		hl
 	ld		a, (hl)					; Get what is currently output to expansion slot register
 
-	and		00001100b				; Get bits 3,2
+	and		0Ch						; Get bits 3,2
 	or		c						; Finally form slot address
 
+	push	af
+
+	ld		h, 80h					; Select ROM at $8000-BFFF
+	call	EnableSlot
+
+	pop		af
+	
 	pop		hl
 	pop		bc
 	
