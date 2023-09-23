@@ -13,4 +13,3 @@ Color2VRAM			= 2800h
 Color3VRAM			= 3000h
 ScreenVRAM			= 3800h		; Screen VRAM location
 SpriteAttributes	= 3B00h		; Sprite attributes
-VBIAddress			= 0FB06h	; Video blank interrupt address

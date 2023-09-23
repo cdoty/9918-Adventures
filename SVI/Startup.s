@@ -58,7 +58,7 @@ start:
 	call	setMode2	; Set mode 2
 	call	clearVRAM	; Clear VRAM
 	
-	im	1
+	im		1
 
 	ei
 	

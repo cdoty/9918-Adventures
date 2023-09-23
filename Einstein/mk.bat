@@ -3,7 +3,7 @@ IF ERRORLEVEL 1 goto errorOut
 
 if exist Burger.dsk del Burger.dsk
 
-copy bootDisk\Boot.dsk Burger.dsk
+copy BootDisk\Boot.dsk Burger.dsk
 
 REM ..\tools\appmake +cpmdisk -f einstein -b Burger.com -o Burger.dsk
 Tools\dsktool insert Burger.com Burger.dsk
