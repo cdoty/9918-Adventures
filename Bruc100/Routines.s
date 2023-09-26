@@ -167,7 +167,7 @@ setInterrupt:
 	ld		a, 0F7h					; 'RST 30H' inter-slot call operation code
 	ld		(InterruptHook), a		; Set new hook op-code
 	ld		hl, NMIHandler			; Get our interrupt entry point
-	ld		(InterruptHook+2), hl	; Set new interrupt entry point
+	ld		(InterruptHook + 2), hl	; Set new interrupt entry point
 	ld		a, 0C9h					; 'RET' operation code
 	ld		(InterruptHook + 4), a	; set operation code of 'RET'
 	
