@@ -61,8 +61,7 @@ setupInterrupt:
 	ret
 	
 resetCTC:
-	ld		b, 2		; Reset CTC
-	
+	ld		b, 2		; Reset CTC	
 	ld		a, 3
 
 resetCTCLoop:
