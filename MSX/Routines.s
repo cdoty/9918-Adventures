@@ -54,12 +54,10 @@ writeVDPReg:
 	
 	ld		a, b				; Write VDP data`
 	out		(VDPBase + 1), a
-	nop
 	
 	ld		a, 80h				; Write VDP register | 80h
 	or		c
 	out		(VDPBase + 1), a
-	nop
 
 	ret
 	
@@ -69,12 +67,10 @@ clearVRAM:
 
 	ld		a, l
 	out		(VDPBase + 1), a
-	nop
 	
 	ld		a, h
 	or		40h
 	out		(VDPBase + 1), a
-	nop
 	
 clearVRAMLoop:
 	xor		a
@@ -104,7 +100,6 @@ tranferToVRAM:
 transferVRAMLoop:
 	ld		a, (hl)
 	out		(VDPBase), a
-	nop
 		
 	inc		hl
 	dec		de
