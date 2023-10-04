@@ -2,7 +2,7 @@
 	size	ROMSize
 
 	define	DISABLE_INTERRUPTS	; Disable interrupts during compressed data transfer
-	define	RAM_8K_2000
+	define	RAM_16K_2000
 	
 	include	Defines.inc
 	include	RamDefines.inc

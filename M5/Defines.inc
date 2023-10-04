@@ -1,5 +1,13 @@
 ROMStart			= 2000h
+	ifdef RAM_8K_2000
 ROMSize				= (8*1024)
+	endif
+	ifdef RAM_8K_4000
+ROMSize				= (8*1024)
+	endif
+	ifdef RAM_16K_2000
+ROMSize				= (16*1024)
+	endif
 RAMStart			= 7300h
 RAMSize				= 0D00h
 StackStart			= 7FFFh
