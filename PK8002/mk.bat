@@ -7,10 +7,10 @@ IF ERRORLEVEL 1 goto errorOut
 tools\mcp -e Burger.cas BurgerPK8002.wav
 IF ERRORLEVEL 1 goto errorOut
 
-copy /Y Burger.cas C:\Users\Charles\Desktop\emu\Cassettes\PK8002
+copy /Y Burger.cas E:\Emulators\emu\Cassettes\PK8002
 IF ERRORLEVEL 1 goto errorOut
 
-copy /Y Burger.map C:\Users\Charles\Desktop\emu\Cassettes\PK8002\Burger.lst
+copy /Y Burger.map E:\Emulators\emu\Cassettes\PK8002\Burger.lst
 IF ERRORLEVEL 1 goto errorOut
 
 echo Build completed successfully
